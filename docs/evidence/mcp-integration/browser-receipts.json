@@ -1,0 +1,133 @@
+{
+  "at": "2026-10-23T07:46:06.744Z",
+  "scope": "Persisted receipts for the demo mission exercised through the actual household browser; no auth/session records exported",
+  "missionId": "68af6915-172b-4f01-a143-58b8db1b0578",
+  "revision": 7,
+  "deadline": 500,
+  "completed": [
+    "bag",
+    "lunch"
+  ],
+  "deferred": [
+    "laundry"
+  ],
+  "receipts": [
+    {
+      "id": "99d95ed4-e217-4bb3-b150-004e4a08aece",
+      "kind": "ai",
+      "provider": "Groq",
+      "hosted": true,
+      "model": "openai/gpt-oss-120b",
+      "latencyMs": 947,
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 947,
+          "status": "success"
+        }
+      ],
+      "rawIntent": {
+        "action": "clarify",
+        "question": "How many additional minutes does the laundry need before it can be released?"
+      },
+      "intent": {
+        "action": "clarify",
+        "question": "How many additional minutes does the laundry need before it can be released?"
+      },
+      "normalizations": [],
+      "at": "2026-10-23T07:43:16.562Z",
+      "tool": "get_mission",
+      "revision": 5,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_get_mission",
+        "requestId": "7",
+        "at": "2026-10-23T07:43:16.569Z"
+      }
+    },
+    {
+      "id": "add1a465-513e-4576-87d5-4912d97af72f",
+      "kind": "conversation",
+      "provider": "Bounded clarification resolver",
+      "latencyMs": 0,
+      "intent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "at": "2026-10-23T07:43:36.209Z",
+      "normalizations": [
+        "Explicit duration answered the current washer question; no new AI call"
+      ],
+      "tool": "delay",
+      "revision": 6,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_report_delay",
+        "requestId": "11",
+        "at": "2026-10-23T07:43:36.215Z"
+      }
+    },
+    {
+      "id": "61f2c33a-1568-4190-8db5-f9ec4f8d23f0",
+      "kind": "ai",
+      "provider": "Groq",
+      "hosted": true,
+      "model": "openai/gpt-oss-120b",
+      "latencyMs": 612,
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 611,
+          "status": "success"
+        }
+      ],
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "intent": {
+        "action": "clarify",
+        "question": "Please review the proposed change and choose Approve this revision. Your commitments have not changed."
+      },
+      "normalizations": [
+        "Conversational approval requires review of the exact proposal in the confirmation interface"
+      ],
+      "at": "2026-10-23T07:43:45.053Z",
+      "tool": "get_mission",
+      "revision": 6,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_get_mission",
+        "requestId": "14",
+        "at": "2026-10-23T07:43:45.060Z"
+      }
+    },
+    {
+      "id": "6df05f81-cb6a-4fcc-a073-4c463027899d",
+      "kind": "domain",
+      "tool": "approve",
+      "revision": 7,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_commit_proposal",
+        "requestId": "19",
+        "at": "2026-10-23T07:44:44.612Z"
+      },
+      "approval": {
+        "source": "explicit review interface",
+        "proposalId": "a1ffb639-cba3-4775-97a3-32dbeb86c5a9",
+        "revision": 6
+      }
+    }
+  ]
+}

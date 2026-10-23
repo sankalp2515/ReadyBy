@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:17,591
+Actual product captures - narrated walkthrough, not a continuous recording.
+
+2
+00:00:17,591 --> 00:00:40,421
+Approved recovery: finish 08:16; keep 08:20; laundry remains unfinished.
+
+3
+00:00:40,421 --> 00:01:04,691
+Real MCP: initialize, discover 13 tools, invoke checked household actions.
+
+4
+00:01:04,691 --> 00:01:23,472
+Essential-task counterexample: no deferral; earliest finish 08:28.

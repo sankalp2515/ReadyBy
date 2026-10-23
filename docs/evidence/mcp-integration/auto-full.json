@@ -1,0 +1,861 @@
+{
+  "at": "2026-10-23T07:39:35.602Z",
+  "provider": "auto",
+  "model": "gemini-3.1-flash-lite",
+  "scope": "Declared 30-utterance intent corpus; no household mutations",
+  "total": 30,
+  "passed": 29,
+  "medianMs": 2897,
+  "p95Ms": 15753,
+  "results": [
+    {
+      "text": "Show what is left",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1873,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1873
+    },
+    {
+      "text": "Can we still leave on time?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 2165,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 2166
+    },
+    {
+      "text": "Start the mission",
+      "expected": {
+        "action": "start_mission"
+      },
+      "actual": {
+        "action": "start_mission"
+      },
+      "rawIntent": {
+        "action": "start_mission"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1352,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1352
+    },
+    {
+      "text": "Plan our departure for 8:25",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "actual": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "rawIntent": {
+        "action": "draft_mission",
+        "deadlineTime": "08:25"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1350,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1350
+    },
+    {
+      "text": "The school bag is packed",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 2797,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 2797
+    },
+    {
+      "text": "I finished packing lunch",
+      "expected": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 3506,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3506
+    },
+    {
+      "text": "Start packing the school bag",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 7455,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 7455
+    },
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 4719,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 4721
+    },
+    {
+      "text": "Washing machine says another 12 minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1411,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1412
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 4451,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 4451
+    },
+    {
+      "text": "Laundry can wait until later",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 5094,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 5094
+    },
+    {
+      "text": "Packing the school bag takes seven minutes",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 861,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 861
+    },
+    {
+      "text": "Arun is unavailable for ten minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1220,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1220
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 15753,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 15753
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 8375,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 8375
+    },
+    {
+      "text": "Recalculate the plan",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "recalculate"
+      },
+      "rawIntent": {
+        "action": "recalculate"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 831,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 831
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Has Arun completed packing the lunch?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Has Arun completed packing the lunch?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1036,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1036
+    },
+    {
+      "text": "Don't mark the school bag complete",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Understood, I will not mark the school bag as complete. Is there another task you would like to update?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Understood, I will not mark the school bag as complete. Is there another task you would like to update?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 977,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 977
+    },
+    {
+      "text": "We are done",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Which named tasks have actually been completed?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Which specific tasks have been completed?"
+      },
+      "normalizations": [
+        "Unscoped global completion cannot become task facts"
+      ],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 3314,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3314
+    },
+    {
+      "text": "Unlock my front door remotely",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "I cannot control physical devices like locks; would you like to update the status of any tasks instead?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "I cannot control physical devices like locks; would you like to update the status of any tasks instead?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 2729,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 2729
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "remaining"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "remaining"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 3708,
+          "status": "success"
+        }
+      ],
+      "pass": false,
+      "latencyMs": 3708
+    },
+    {
+      "text": "Change filling bottles to a four minute task",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 903,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 903
+    },
+    {
+      "text": "Could you tell us our next step?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status",
+        "question": "Would you like to start the mission now, or should I recalculate the schedule based on the current time?"
+      },
+      "rawIntent": {
+        "action": "status",
+        "question": "Would you like to start the mission now, or should I recalculate the schedule based on the current time?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 16294,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 16294
+    },
+    {
+      "text": "I have not finished packing lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Are you still working on packing lunch, or would you like to pause the task?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Are you still working on packing lunch, or would you like to pause the task?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 3043,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3043
+    },
+    {
+      "text": "Breakfast must be finished before we go",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 2897,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 2897
+    },
+    {
+      "text": "Arun cannot help for 17 minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 4174,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 4174
+    },
+    {
+      "text": "Nope",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 4202,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 4202
+    },
+    {
+      "text": "Please check the schedule again",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "recalculate"
+      },
+      "rawIntent": {
+        "action": "recalculate"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 10880,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 10881
+    },
+    {
+      "text": "At what time should we leave?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 953,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 953
+    },
+    {
+      "text": "Use an 08:40 departure for this draft",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 520
+      },
+      "actual": {
+        "action": "draft_mission",
+        "deadline": 520
+      },
+      "rawIntent": {
+        "action": "draft_mission",
+        "deadlineTime": "08:40"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "latencyMs": 1313,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1314
+    }
+  ]
+}

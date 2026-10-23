@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-23T07:33:37.283Z",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "scope": "Six-case provider screening; no household mutations",
+  "total": 6,
+  "passed": 6,
+  "medianMs": 663,
+  "p95Ms": 749,
+  "results": [
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 748,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 749
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 727,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 728
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Did Arun actually pack the lunch or is it still pending?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Did Arun actually pack the lunch or is it still pending?"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 397,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 397
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 588,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 589
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 662,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 663
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 411,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 412
+    }
+  ]
+}

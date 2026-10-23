@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KinRelay · A shared plan, a clear owner</title><link rel="stylesheet" href="/style.css"><script src="/app.js" type="module"></script></head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="KinRelay home"><span class="brand-mark">k<span>↗</span></span>KinRelay</a>
+    <p class="brand-note">A little less to carry.</p>
+    <div class="household"><span class="house-icon">⌂</span><div><strong>Leela’s circle</strong><small>Family coordination</small></div></div>
+    <nav aria-label="Workspace"><a class="nav-active" href="#plan">◫ <span>Tomorrow’s plan</span></a><a href="#assistant">✧ <span>Ask your assistant</span></a><a href="#history">◷ <span>Handoff history</span></a></nav>
+    <div class="sidebar-bottom"><div class="circle-avatars"><span>M</span><span>A</span><span>P</span><span>D</span></div><strong>Four people. One shared plan.</strong><p>Make room for each other.</p><button id="reset" class="sidebar-reset">Reset demo scenario</button></div>
+  </aside>
+  <main>
+    <div class="prototype-bar"><span class="prototype-dot"></span><strong>Alexa+ concept prototype</strong><span class="bar-detail">Local simulation · fictional household · no messages sent</span><button id="about">How this works</button></div>
+    <header class="page-header"><div><p class="date">Thursday, 22 October 2026 · demo scenario</p><h1>A shared plan.<br>A clear owner.</h1><p class="intro">When plans change, make sure someone has said yes.</p></div><div class="persona"><label for="actor">You’re viewing as</label><select id="actor"><option value="maya">Maya · coordinator</option><option value="arun">Arun · family</option><option value="priya">Priya · family</option><option value="dev">Dev · family</option></select><small>Demo persona switch; not authentication</small></div></header>
+    <div id="error" role="alert" hidden></div>
+    <section id="readiness" class="readiness" aria-live="polite"></section>
+    <div class="workspace">
+      <section id="plan" class="plan-section"><div class="section-head"><h2>Tomorrow, together</h2><span id="task-count"></span></div><div id="tasks"></div><div id="recovery"></div><section id="history" class="history"><h2>Every handoff has a history</h2><ol id="events"></ol></section></section>
+      <aside class="assistant-panel" id="assistant"><div class="assistant-heading"><span class="assistant-symbol">✧</span><div><h2>Your coordination assistant</h2><p>From a changed plan to a clear next step.</p></div></div><div id="conversation" class="conversation" role="log" aria-label="Assistant conversation"></div><div class="suggestions"><button data-command="Move the appointment to 14:00">Appointment moved to 14:00</button><button data-command="What is the plan?">What’s still unconfirmed?</button></div><form id="command-form"><label class="sr-only" for="message">Message your assistant</label><div class="input-wrap"><input id="message" maxlength="500" placeholder="Ask about the plan…" autocomplete="off"><button id="send" type="submit" aria-label="Send message">↑</button></div></form><p class="assistant-disclosure">Structured commands run a real local planner. No LLM, microphone, or live Alexa connection.</p><details id="tool-details"><summary>Inspect prototype activity</summary><div id="tools"><p>No tools called yet.</p></div></details></aside>
+    </div>
+    <footer>KinRelay handles everyday logistics in this prototype. It does not provide medical advice, emergency response, or delivery notifications.<span id="revision"></span></footer>
+  </main>
+  <dialog id="about-dialog"><h2>A working handoff, transparently simulated.</h2><p>This prototype explores an Alexa+ experience. Its local engine checks supplied availability, tracks offers and acceptance, and saves the plan to disk.</p><p>All names and schedules are fictional. Participant switching simulates separate people; it is not identity verification. Availability is supplied demo data, not a connected calendar. Messages here stay inside this app.</p><p>Try: move the appointment to 14:00, offer the ride to Priya, then switch to Priya and accept or decline. Refresh to see the saved result.</p><p>Conversation supports the displayed commands and close phrasing. It is not an LLM or a live Alexa+ integration. A final submission needs a verified agentic runtime and broader conversation handling.</p><button id="close-about" class="primary">Got it</button></dialog>
+  <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Start this demo again?</h2><p>This erases the fictional household’s local history and restores the original confirmed plan.</p><div class="actions"><button id="cancel-reset" class="secondary">Keep this plan</button><button id="confirm-reset" class="primary">Reset fictional household</button></div></dialog>
+</body></html>

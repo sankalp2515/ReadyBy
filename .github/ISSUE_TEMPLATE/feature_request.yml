@@ -1,0 +1,16 @@
+name: Feature request
+description: Describe a household problem and useful outcome.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Customer problem
+      description: What happens today, and who needs the improvement?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome and example
+    validations:
+      required: true

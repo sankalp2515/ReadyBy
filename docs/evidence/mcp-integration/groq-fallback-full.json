@@ -1,0 +1,922 @@
+{
+  "at": "2026-10-23T07:43:07.733Z",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "scope": "Declared 30-utterance intent corpus; no household mutations",
+  "total": 30,
+  "passed": 30,
+  "medianMs": 1047,
+  "p95Ms": 3821,
+  "results": [
+    {
+      "text": "Show what is left",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 376,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 376
+    },
+    {
+      "text": "Can we still leave on time?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 1429,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1429
+    },
+    {
+      "text": "Start the mission",
+      "expected": {
+        "action": "start_mission"
+      },
+      "actual": {
+        "action": "start_mission"
+      },
+      "rawIntent": {
+        "action": "start_mission"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 437,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 437
+    },
+    {
+      "text": "Plan our departure for 8:25",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "actual": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "rawIntent": {
+        "action": "draft_mission",
+        "deadlineTime": "08:25"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 636,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 636
+    },
+    {
+      "text": "The school bag is packed",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 776,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 777
+    },
+    {
+      "text": "I finished packing lunch",
+      "expected": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 1163,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1164
+    },
+    {
+      "text": "Start packing the school bag",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 571,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 571
+    },
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 511,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 511
+    },
+    {
+      "text": "Washing machine says another 12 minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 417,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 417
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 23
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1736,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1759
+    },
+    {
+      "text": "Laundry can wait until later",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 936,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 936
+    },
+    {
+      "text": "Packing the school bag takes seven minutes",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 38
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 3783,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3821
+    },
+    {
+      "text": "Arun is unavailable for ten minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1308,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1308
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 793,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 793
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 955,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 956
+    },
+    {
+      "text": "Recalculate the plan",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "recalculate"
+      },
+      "rawIntent": {
+        "action": "recalculate"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 30
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1217,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1247
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Has Arun completed packing the lunch?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Has Arun completed packing the lunch?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1047,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1047
+    },
+    {
+      "text": "Don't mark the school bag complete",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "You asked not to mark the school bag complete. Should we leave it pending or take another action?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "You asked not to mark the school bag complete. Should we leave it pending or take another action?"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 832,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 832
+    },
+    {
+      "text": "We are done",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Which named tasks have actually been completed?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Which specific tasks have been completed?"
+      },
+      "normalizations": [
+        "Unscoped global completion cannot become task facts"
+      ],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 27
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 3599,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3626
+    },
+    {
+      "text": "Unlock my front door remotely",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "I cannot control physical devices like locks; would you like to update the status of any tasks instead?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "I cannot control physical devices like locks; would you like to update the status of any tasks instead?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1355,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1355
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 531,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 532
+    },
+    {
+      "text": "Change filling bottles to a four minute task",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 1363,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1364
+    },
+    {
+      "text": "Could you tell us our next step?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status",
+        "question": "Would you like to start the mission now, or should I recalculate the schedule based on the current time?"
+      },
+      "rawIntent": {
+        "action": "status",
+        "question": "Would you like to start the mission now, or should I recalculate the schedule based on the current time?"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 26
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 3685,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 3713
+    },
+    {
+      "text": "I have not finished packing lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Do you want to start or update the progress for the lunch packing task?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Do you want to start or update the progress for the lunch packing task?"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 1514,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1514
+    },
+    {
+      "text": "Breakfast must be finished before we go",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 22
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 960,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 982
+    },
+    {
+      "text": "Arun cannot help for 17 minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1012,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1012
+    },
+    {
+      "text": "Nope",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "quota cooldown"
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1192,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1192
+    },
+    {
+      "text": "Please check the schedule again",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "recalculate"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [
+        "Explicit request to recompute resolved by bounded policy; no proposal approval"
+      ],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 1256,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 1256
+    },
+    {
+      "text": "At what time should we leave?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "provider": "Groq",
+      "model": "openai/gpt-oss-120b",
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 384,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 384
+    },
+    {
+      "text": "Use an 08:40 departure for this draft",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 520
+      },
+      "actual": {
+        "action": "draft_mission",
+        "deadline": 520
+      },
+      "rawIntent": {
+        "action": "draft_mission",
+        "deadlineTime": "08:40"
+      },
+      "normalizations": [],
+      "provider": "Google Gemini",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 26
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 4458,
+          "status": "success"
+        }
+      ],
+      "pass": true,
+      "latencyMs": 4485
+    }
+  ]
+}

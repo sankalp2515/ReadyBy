@@ -1,0 +1,32 @@
+{
+  "scope": "Same-host clean source export, without development .env or household database",
+  "checks": {
+    "frozenInstall": true,
+    "installedPackages": 118,
+    "typecheck": true,
+    "productionBuild": true,
+    "testsPassed": 56,
+    "testsFailed": 0,
+    "independentMcpProtocol": "2025-11-25",
+    "discoveredTools": 13,
+    "typedRecoveryAndEssentialProtection": true,
+    "runtimeFilesComparedWithTestedExport": 56,
+    "runtimeFilesDiffering": 0,
+    "frontendConfiguredCredentialValuesAbsent": true
+  },
+  "browser": {
+    "desktopWidth": 1920,
+    "phoneWidth": 390,
+    "noDocumentOverflow": true,
+    "approvedRecoveryPersistedAfterReloadAndServerRestart": true,
+    "essentialCounterexamplePersistedAfterServerRestart": true,
+    "viewportOverrideReset": true
+  },
+  "notTested": [
+    "second physical machine",
+    "human microphone accuracy",
+    "production load",
+    "native Alexa deployment",
+    "customer demand"
+  ]
+}

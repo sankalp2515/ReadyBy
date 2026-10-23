@@ -1,0 +1,573 @@
+{
+  "at": "2026-10-23T07:26:48.218Z",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "scope": "Declared 30-utterance intent corpus; no household mutations",
+  "total": 30,
+  "passed": 27,
+  "medianMs": 1188,
+  "p95Ms": 4543,
+  "results": [
+    {
+      "text": "Show what is left",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1748
+    },
+    {
+      "text": "Can we still leave on time?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 9136
+    },
+    {
+      "text": "Start the mission",
+      "expected": {
+        "action": "start_mission"
+      },
+      "actual": {
+        "action": "start_mission"
+      },
+      "rawIntent": {
+        "action": "start_mission"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 4397
+    },
+    {
+      "text": "Plan our departure for 8:25",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "actual": {
+        "action": "draft_mission",
+        "deadline": 505
+      },
+      "rawIntent": {
+        "action": "draft_mission",
+        "deadlineTime": "08:25"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1236
+    },
+    {
+      "text": "The school bag is packed",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 836
+    },
+    {
+      "text": "I finished packing lunch",
+      "expected": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "lunch",
+        "operation": "complete"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 2176
+    },
+    {
+      "text": "Start packing the school bag",
+      "expected": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "actual": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "rawIntent": {
+        "action": "progress",
+        "taskId": "bag",
+        "operation": "start"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1323
+    },
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 872
+    },
+    {
+      "text": "Washing machine says another 12 minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 12,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 12
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 12
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 655
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 2873
+    },
+    {
+      "text": "Laundry can wait until later",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": false
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 900
+    },
+    {
+      "text": "Packing the school bag takes seven minutes",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bag",
+        "field": "duration",
+        "value": 7
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 897
+    },
+    {
+      "text": "Arun is unavailable for ten minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 10
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 705
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 927
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "pass": true,
+      "latencyMs": 1189
+    },
+    {
+      "text": "Recalculate the plan",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "recalculate"
+      },
+      "rawIntent": {
+        "action": "recalculate"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 962
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Has Arun completed packing lunch?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Has Arun completed packing lunch?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 944
+    },
+    {
+      "text": "Don't mark the school bag complete",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Which task has actually been completed?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Which task has actually been completed?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1317
+    },
+    {
+      "text": "We are done",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Which tasks have you completed?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Which tasks have you completed?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 823
+    },
+    {
+      "text": "Unlock my front door remotely",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "I cannot control external devices. Would you like to mark the final check task as complete instead?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "I cannot control external devices. Would you like to mark the final check task as complete instead?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 689
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1341
+    },
+    {
+      "text": "Change filling bottles to a four minute task",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "bottles",
+        "field": "duration",
+        "value": 4
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 952
+    },
+    {
+      "text": "Could you tell us our next step?",
+      "expected": {
+        "action": "status"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 961
+    },
+    {
+      "text": "I have not finished packing lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Are you still working on packing lunch, or would you like to pause it?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Are you still working on packing lunch, or would you like to pause it?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1664
+    },
+    {
+      "text": "Breakfast must be finished before we go",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "breakfast",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1299
+    },
+    {
+      "text": "Arun cannot help for 17 minutes",
+      "expected": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "actual": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "rawIntent": {
+        "action": "availability",
+        "personId": "arun",
+        "minutes": 17
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 806
+    },
+    {
+      "text": "Nope",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "pass": true,
+      "latencyMs": 1188
+    },
+    {
+      "text": "Please check the schedule again",
+      "expected": {
+        "action": "recalculate"
+      },
+      "actual": {
+        "action": "status"
+      },
+      "rawIntent": {
+        "action": "status"
+      },
+      "normalizations": [],
+      "pass": false,
+      "latencyMs": 4543
+    },
+    {
+      "text": "At what time should we leave?",
+      "expected": {
+        "action": "status"
+      },
+      "pass": false,
+      "error": "Google Gemini request failed (HTTP 429). No changes were applied. Check model access, quota and server configuration.",
+      "latencyMs": 350
+    },
+    {
+      "text": "Use an 08:40 departure for this draft",
+      "expected": {
+        "action": "draft_mission",
+        "deadline": 520
+      },
+      "pass": false,
+      "error": "Google Gemini request failed (HTTP 429). No changes were applied. Check model access, quota and server configuration.",
+      "latencyMs": 387
+    }
+  ]
+}

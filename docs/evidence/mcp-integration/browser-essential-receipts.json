@@ -1,0 +1,131 @@
+{
+  "scope": "Persisted essential-task browser fixture after server restart; no auth/session records",
+  "missionId": "dfbddf6b-622d-46af-8bd8-c2c6325a2b12",
+  "revision": 2,
+  "deadline": 500,
+  "laundry": {
+    "id": "laundry",
+    "status": "pending"
+  },
+  "proposal": {
+    "id": "26c30f77-2b87-437d-aeb3-680493b1a338",
+    "baseRevision": 2,
+    "options": [
+      {
+        "id": "865395af-3436-4e49-9cf4-7b4c6a837295",
+        "kind": "later",
+        "baseRevision": 2,
+        "evaluatedAt": 486,
+        "validUntil": 488,
+        "deferred": [],
+        "deadline": 508,
+        "finish": 508,
+        "schedule": [
+          {
+            "taskId": "bag",
+            "personId": "maya",
+            "start": 480,
+            "end": 485,
+            "completed": true
+          },
+          {
+            "taskId": "lunch",
+            "personId": "arun",
+            "start": 480,
+            "end": 484,
+            "completed": true
+          },
+          {
+            "taskId": "bottles",
+            "personId": "arun",
+            "start": 486,
+            "end": 487,
+            "active": true
+          },
+          {
+            "taskId": "breakfast",
+            "personId": "maya",
+            "start": 486,
+            "end": 491,
+            "active": true
+          },
+          {
+            "taskId": "shoes",
+            "personId": "maya",
+            "start": 491,
+            "end": 494
+          },
+          {
+            "taskId": "laundry",
+            "personId": "arun",
+            "start": 501,
+            "end": 506
+          },
+          {
+            "taskId": "final",
+            "personId": "maya",
+            "start": 506,
+            "end": 508
+          }
+        ],
+        "verification": {
+          "valid": true,
+          "errors": [],
+          "finish": 508,
+          "deadline": 500,
+          "onTime": false,
+          "buffer": -8,
+          "checks": [
+            "All retained tasks accounted for",
+            "Prerequisites and releases",
+            "Participant eligibility and availability",
+            "No overlapping work",
+            "Reported completions preserved",
+            "Deadline compared to actual schedule"
+          ]
+        }
+      }
+    ]
+  },
+  "receipts": [
+    {
+      "id": "3749e839-8a42-4cfd-8ff3-f9289a66de6b",
+      "kind": "ai",
+      "provider": "Groq",
+      "hosted": true,
+      "model": "openai/gpt-oss-120b",
+      "latencyMs": 844,
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 844,
+          "status": "success"
+        }
+      ],
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "intent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "at": "2026-10-23T07:48:32.881Z",
+      "tool": "delay",
+      "revision": 2,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_report_delay",
+        "requestId": "10",
+        "at": "2026-10-23T07:48:32.886Z"
+      }
+    }
+  ]
+}

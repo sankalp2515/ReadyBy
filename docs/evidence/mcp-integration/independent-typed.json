@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-23T07:38:09.215Z",
+  "scope": "Independent official SDK client; direct typed tools, no LLM call; scripted fixture/confirmation",
+  "negotiatedProtocol": "2025-11-25",
+  "discoveredTools": [
+    "readyby_interpret_request",
+    "readyby_get_mission",
+    "readyby_report_progress",
+    "readyby_report_delay",
+    "readyby_edit_task",
+    "readyby_set_availability",
+    "readyby_recalculate",
+    "readyby_commit_proposal",
+    "readyby_reject_proposal",
+    "readyby_start_mission",
+    "readyby_draft_mission",
+    "readyby_advance_demo",
+    "readyby_resume_deferred"
+  ],
+  "openingFinish": 499,
+  "disruptedFinish": 508,
+  "retainedWorkFinish": 496,
+  "approvedMissionId": "ff898a5b-6aca-49b1-922a-6890df65590b",
+  "essentialDeferralAvailable": false,
+  "deadlineRemains": 500,
+  "trace": [
+    {
+      "method": "initialize",
+      "status": 200,
+      "latencyMs": 24
+    },
+    {
+      "method": "notifications/initialized",
+      "status": 202,
+      "latencyMs": 9
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "latencyMs": 15
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 13
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_report_delay",
+      "status": 200,
+      "latencyMs": 12
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_commit_proposal",
+      "status": 200,
+      "latencyMs": 12
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_report_delay",
+      "status": 200,
+      "latencyMs": 6
+    }
+  ],
+  "receipts": [
+    {
+      "id": "c935d379-f566-4a6f-835c-a45a75e2b121",
+      "kind": "domain",
+      "tool": "approve",
+      "revision": 4,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_commit_proposal",
+        "requestId": "4",
+        "at": "2026-10-23T07:38:09.193Z"
+      },
+      "approval": {
+        "source": "explicit review interface",
+        "proposalId": "e3016ae5-7697-47ee-b34e-2c4bbad0ef31",
+        "revision": 3
+      }
+    }
+  ]
+}

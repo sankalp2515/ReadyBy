@@ -1,0 +1,62 @@
+[
+  {
+    "id": "05081ec2-d2d8-46ab-8d0e-222a9c00af35",
+    "kind": "ai",
+    "provider": "Ollama (local)",
+    "model": "llama3:8b-instruct-q4_K_M",
+    "latencyMs": 18878,
+    "rawIntent": {
+      "action": "approve",
+      "optionKind": "defer"
+    },
+    "intent": {
+      "action": "approve",
+      "optionKind": "defer"
+    },
+    "normalizations": [],
+    "at": "2026-10-22T19:46:28.668Z",
+    "tool": "approve",
+    "revision": 3
+  },
+  {
+    "id": "51036d61-810b-4d2f-8f49-81ebb94e695a",
+    "kind": "conversation",
+    "provider": "Bounded clarification resolver",
+    "latencyMs": 0,
+    "intent": {
+      "action": "delay",
+      "taskId": "laundry",
+      "kind": "release",
+      "minutes": 15
+    },
+    "at": "2026-10-22T19:39:54.266Z",
+    "normalizations": [
+      "Explicit duration answered the current washer question; no new AI call"
+    ],
+    "tool": "delay",
+    "revision": 2
+  },
+  {
+    "id": "1e5eba1a-4a2d-43b2-9461-cba21886a16e",
+    "kind": "ai",
+    "provider": "Ollama (local)",
+    "model": "llama3:8b-instruct-q4_K_M",
+    "latencyMs": 20426,
+    "rawIntent": {
+      "action": "delay",
+      "taskId": "laundry",
+      "minutes": 12,
+      "kind": "release"
+    },
+    "intent": {
+      "action": "clarify",
+      "question": "Please provide the number of minutes for that change."
+    },
+    "normalizations": [
+      "Ungrounded numeric change blocked; the request did not supply this value"
+    ],
+    "at": "2026-10-22T19:39:14.364Z",
+    "tool": "get_mission",
+    "revision": 1
+  }
+]

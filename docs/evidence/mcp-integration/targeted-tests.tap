@@ -1,0 +1,122 @@
+TAP version 13
+# (node:90980) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+ok 1 - official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+  ---
+  duration_ms: 244.6218
+  type: 'test'
+  ...
+# Subtest: typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+ok 2 - typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+  ---
+  duration_ms: 180.2015
+  type: 'test'
+  ...
+# Subtest: two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+ok 3 - two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+  ---
+  duration_ms: 147.3923
+  type: 'test'
+  ...
+# Subtest: MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+ok 4 - MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+  ---
+  duration_ms: 73.735
+  type: 'test'
+  ...
+# (node:93212) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: clarification survives a read, resolves explicitly once, and cannot approve or bypass state checks
+ok 5 - clarification survives a read, resolves explicitly once, and cannot approve or bypass state checks
+  ---
+  duration_ms: 202.8396
+  type: 'test'
+  ...
+# Subtest: speech endpoints require household authentication and CSRF; invalid audio never mutates a mission
+ok 6 - speech endpoints require household authentication and CSRF; invalid audio never mutates a mission
+  ---
+  duration_ms: 44.5054
+  type: 'test'
+  ...
+# Subtest: household authentication, CSRF, scoped mission access and persistence
+ok 7 - household authentication, CSRF, scoped mission access and persistence
+  ---
+  duration_ms: 1530.6892
+  type: 'test'
+  ...
+# Subtest: invitation is one-use; member access is bounded and can be revoked
+ok 8 - invitation is one-use; member access is bounded and can be revoked
+  ---
+  duration_ms: 1048.5512
+  type: 'test'
+  ...
+# Subtest: recovery code rotates, invalidates sessions, and cannot be reused
+ok 9 - recovery code rotates, invalidates sessions, and cannot be reused
+  ---
+  duration_ms: 1366.0733
+  type: 'test'
+  ...
+# Subtest: routine, demo chapters, model receipts and command retries use real reducer state
+ok 10 - routine, demo chapters, model receipts and command retries use real reducer state
+  ---
+  duration_ms: 57.9444
+  type: 'test'
+  ...
+# Subtest: database survives reopen, rolls back failed writes and deletes household cascades
+ok 11 - database survives reopen, rolls back failed writes and deletes household cascades
+  ---
+  duration_ms: 374.1468
+  type: 'test'
+  ...
+# Subtest: template constraints and rate limits reject invalid input
+ok 12 - template constraints and rate limits reject invalid input
+  ---
+  duration_ms: 4.1066
+  type: 'test'
+  ...
+# Subtest: AI outage returns an actionable error without changing saved work
+ok 13 - AI outage returns an actionable error without changing saved work
+  ---
+  duration_ms: 18.3944
+  type: 'test'
+  ...
+# Subtest: single-adult AI draft defaults remain valid and production requires HTTPS configuration
+ok 14 - single-adult AI draft defaults remain valid and production requires HTTPS configuration
+  ---
+  duration_ms: 1.1932
+  type: 'test'
+  ...
+# Subtest: concurrent changes cannot partially commit an interpreted request
+ok 15 - concurrent changes cannot partially commit an interpreted request
+  ---
+  duration_ms: 21.0462
+  type: 'test'
+  ...
+# Subtest: hosted adapters use server-side credentials and parse native response formats without sending keys in URLs or payloads
+ok 16 - hosted adapters use server-side credentials and parse native response formats without sending keys in URLs or payloads
+  ---
+  duration_ms: 41.2382
+  type: 'test'
+  ...
+# Subtest: provider failures never expose provider response bodies or credentials
+ok 17 - provider failures never expose provider response bodies or credentials
+  ---
+  duration_ms: 2.4436
+  type: 'test'
+  ...
+# Subtest: quota failure falls back explicitly and subsequent requests respect provider cooldown
+ok 18 - quota failure falls back explicitly and subsequent requests respect provider cooldown
+  ---
+  duration_ms: 3.2188
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5209.9684

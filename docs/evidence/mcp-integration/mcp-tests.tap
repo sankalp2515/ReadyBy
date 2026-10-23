@@ -1,0 +1,42 @@
+TAP version 13
+# (node:91776) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: prepared calls and review confirmations expire independently of the demo clock
+ok 1 - prepared calls and review confirmations expire independently of the demo clock
+  ---
+  duration_ms: 199.7068
+  type: 'test'
+  ...
+# Subtest: official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+ok 2 - official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+  ---
+  duration_ms: 69.1154
+  type: 'test'
+  ...
+# Subtest: typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+ok 3 - typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+  ---
+  duration_ms: 112.7628
+  type: 'test'
+  ...
+# Subtest: two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+ok 4 - two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+  ---
+  duration_ms: 95.0822
+  type: 'test'
+  ...
+# Subtest: MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+ok 5 - MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+  ---
+  duration_ms: 61.7032
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 943.9458

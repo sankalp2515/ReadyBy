@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-23T06:49:29.116Z",
+  "scope": "Fresh local model request; no household database mutation; interpreter only, not complete UI flow",
+  "input": "The washer still has fifteen minutes left.",
+  "stateUnchanged": true,
+  "intent": {
+    "action": "delay",
+    "taskId": "laundry",
+    "minutes": 15,
+    "kind": "release"
+  },
+  "receipt": {
+    "id": "33fa4296-30d1-4fb5-b1f2-0686ccc08469",
+    "kind": "ai",
+    "provider": "Ollama (local)",
+    "model": "llama3:8b-instruct-q4_K_M",
+    "latencyMs": 23345,
+    "rawIntent": {
+      "action": "delay",
+      "taskId": "laundry",
+      "minutes": 15,
+      "kind": "release"
+    },
+    "intent": {
+      "action": "delay",
+      "taskId": "laundry",
+      "minutes": 15,
+      "kind": "release"
+    },
+    "normalizations": [],
+    "at": "2026-10-23T06:49:29.116Z"
+  }
+}

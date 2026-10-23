@@ -1,0 +1,136 @@
+{
+  "at": "2026-10-23T07:22:37.728Z",
+  "provider": "gemini",
+  "model": "gemini-3.1-flash-lite",
+  "scope": "Six-case provider screening; no household mutations",
+  "total": 6,
+  "passed": 6,
+  "medianMs": 1850,
+  "p95Ms": 3077,
+  "results": [
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 1850
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "actual": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "rawIntent": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 3077
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "actual": {
+        "action": "clarify",
+        "question": "Has Arun completed packing lunch?"
+      },
+      "rawIntent": {
+        "action": "clarify",
+        "question": "Has Arun completed packing lunch?"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 2866
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "actual": {
+        "action": "reject"
+      },
+      "rawIntent": {
+        "action": "reject"
+      },
+      "normalizations": [
+        "Explicit refusal resolved against pending proposal; never positive consent"
+      ],
+      "pass": true,
+      "latencyMs": 1168
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 937
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "actual": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "rawIntent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 923
+    }
+  ]
+}

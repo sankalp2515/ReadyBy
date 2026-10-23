@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1620" height="1030" viewBox="0 0 1620 1030" role="img" aria-labelledby="title desc">
+<title id="title">ReadyBy actual system architecture</title>
+<desc id="desc">Household input passes through authenticated endpoints, local language interpretation and validation. A deterministic scheduler and independent checker produce proposals. Changes to commitments need household approval. SQLite persists actions and receipts. Ollama and optional Vosk run locally. MCP 2025-11-25 tools are implemented over Streamable HTTP. Hosted providers use server-side keys; local Ollama is an alternative.</desc>
+<rect width="1620" height="1030" fill="#fafaf8"/>
+<text x="40" y="46" font-family="Segoe UI,Arial,sans-serif" font-size="31" font-weight="700" fill="#17263f" text-anchor="start">ReadyBy in context</text>
+<text x="40" y="77" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" fill="#526073" text-anchor="start">Actual implementation • MCP connects household tools; AI interprets requests; checked schedules and consent govern changes.</text>
+<rect x="40" y="150" width="270" height="590" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.5"/>
+<text x="58" y="177" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#526073" text-anchor="start">HOUSEHOLD INTERFACE</text>
+<rect x="355" y="150" width="920" height="590" rx="10" fill="#edf2f8" stroke="#203f67" stroke-width="2"/>
+<text x="375" y="177" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#203f67" text-anchor="start">READYBY APPLICATION  /  NODE.JS</text>
+<rect x="1320" y="150" width="260" height="590" rx="10" fill="#fafaf8" stroke="#98a6b8" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="1338" y="177" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#526073" text-anchor="start">RUNTIMES / STORAGE</text>
+<polyline points="175,315 175,365" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="175,365 180.0,354.0 170.0,354.0" fill="#576373"/>
+<polyline points="290,398 330,398 330,238 385,238" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="385,238 374.0,233.0 374.0,243.0" fill="#576373"/>
+<polyline points="508,265 508,335" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="508,335 513.0,324.0 503.0,324.0" fill="#576373"/>
+<polyline points="385,410 345,410 345,440 290,440" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="290,440 301.0,445.0 301.0,435.0" fill="#576373"/>
+<polyline points="935,388 1000,388" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="1000,388 989.0,383.0 989.0,393.0" fill="#576373"/>
+<polyline points="1110,440 1110,580" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="1110,580 1115.0,569.0 1105.0,569.0" fill="#576373"/>
+<polyline points="1000,630 935,630" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="935,630 946.0,635.0 946.0,625.0" fill="#576373"/>
+<polyline points="810,680 810,718 330,718 330,655 290,655" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="290,655 301.0,660.0 301.0,650.0" fill="#576373"/>
+<polyline points="290,612 385,612" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="385,612 374.0,607.0 374.0,617.0" fill="#576373"/>
+<polyline points="630,605 655,605 655,545 1450,545 1450,570" fill="none" stroke="#576373" stroke-width="1.7"/>
+<polygon points="1450,570 1455.0,559.0 1445.0,559.0" fill="#576373"/>
+<polyline points="508,335 508,298 1300,298 1300,240 1340,240" fill="none" stroke="#203f67" stroke-width="1.7"/>
+<polygon points="1340,240 1329.0,235.0 1329.0,245.0" fill="#203f67"/>
+<polyline points="1560,300 1600,300 1600,510 655,510 655,465 508,465 508,440" fill="none" stroke="#203f67" stroke-width="1.7"/>
+<polygon points="508,440 503.0,451.0 513.0,451.0" fill="#203f67"/>
+<polyline points="290,420 330,420 330,480 810,480 810,440" fill="none" stroke="#576373" stroke-width="1.7" stroke-dasharray="7 5"/>
+<polygon points="810,440 805.0,451.0 815.0,451.0" fill="#576373"/>
+<polyline points="290,270 320,270 320,122 1602,122 1602,435 1560,435" fill="none" stroke="#8994a2" stroke-width="1.7" stroke-dasharray="7 5"/>
+<polygon points="1560,435 1571.0,440.0 1571.0,430.0" fill="#8994a2"/>
+<rect x="60" y="215" width="230" height="100" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="175.0" y="247" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">Household request</text>
+<text x="175.0" y="272" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Text or optional voice</text>
+<text x="175.0" y="294" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Explicit progress reports</text>
+<rect x="60" y="365" width="230" height="85" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="175.0" y="397" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">React / MCP client</text>
+<text x="175.0" y="422" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Initialize • discover tools</text>
+<text x="175.0" y="444" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Call the prepared action</text>
+<rect x="60" y="580" width="230" height="100" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="175.0" y="612" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">Review and approve</text>
+<text x="175.0" y="637" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Trade-off stays a proposal</text>
+<text x="175.0" y="659" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Household confirms change</text>
+<rect x="385" y="205" width="860" height="60" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="815.0" y="237" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">Authenticated MCP endpoint /mcp</text>
+<text x="815.0" y="262" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">2025-11-25 • Streamable HTTP • household session • CSRF • revisions • idempotency</text>
+<rect x="385" y="335" width="245" height="105" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="507.5" y="367" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Interpret request</text>
+<text x="507.5" y="392" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Actual AI or scoped follow-up</text>
+<text x="507.5" y="414" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Prepared tool call • 90s</text>
+<rect x="690" y="335" width="245" height="105" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="812.5" y="367" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Execute selected tool</text>
+<text x="812.5" y="392" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Second tools/call request</text>
+<text x="812.5" y="414" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Scoped, validated arguments</text>
+<rect x="1000" y="335" width="245" height="105" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="1122.5" y="362" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Schedule search</text>
+<text x="1122.5" y="387" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Deterministic • bounded</text>
+<text x="1122.5" y="409" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Dependencies • capacity</text>
+<text x="1122.5" y="431" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Passive waits • deadline</text>
+<rect x="1000" y="580" width="245" height="100" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="1122.5" y="612" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Independent checker</text>
+<text x="1122.5" y="637" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Deterministic validation</text>
+<text x="1122.5" y="659" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Preserve reported progress</text>
+<rect x="690" y="580" width="245" height="100" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="812.5" y="612" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Recovery proposal</text>
+<text x="812.5" y="637" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Deferral / reassignment</text>
+<text x="812.5" y="659" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Or admit a later departure</text>
+<rect x="385" y="580" width="245" height="100" rx="10" fill="#203f67" stroke="#dd5917" stroke-width="2"/>
+<text x="507.5" y="612" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Commit valid action</text>
+<text x="507.5" y="637" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Single-use review confirmation</text>
+<text x="507.5" y="659" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#e3edf7" text-anchor="middle">Exact revision • receipt</text>
+<rect x="1340" y="205" width="220" height="135" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="1450.0" y="232" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">Model providers</text>
+<text x="1450.0" y="257" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Groq • Gemini fallback</text>
+<text x="1450.0" y="279" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Server-side keys only</text>
+<text x="1450.0" y="301" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Local Ollama mode available</text>
+<rect x="1340" y="380" width="220" height="110" rx="10" fill="#ffffff" stroke="#8793a5" stroke-width="1.4"/>
+<text x="1450.0" y="407" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">Optional Vosk</text>
+<text x="1450.0" y="432" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Local backend speech</text>
+<text x="1450.0" y="454" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">PCM16 → transcript</text>
+<text x="1450.0" y="476" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#526073" text-anchor="middle">Not an LLM</text>
+<path d="M1340,585 C1340,565 1560,565 1560,585 V665 C1560,685 1340,685 1340,665 Z" fill="#f1f2f4" stroke="#576373" stroke-width="1.5"/>
+<ellipse cx="1450.0" cy="585" rx="110.0" ry="15" fill="#f1f2f4" stroke="#576373" stroke-width="1.5"/>
+<text x="1450" y="621" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#17263f" text-anchor="middle">SQLite storage</text>
+<text x="1450" y="648" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#526073" text-anchor="middle">Missions • history • receipts</text>
+<text x="800" y="111" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#526073" text-anchor="middle">Optional speech API: local PCM16 in / editable transcript back</text>
+<text x="902" y="287" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#203f67" text-anchor="middle">Hosted API (or selected local Ollama) • request + context</text>
+<text x="338" y="455" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="400" fill="#526073" text-anchor="middle">Call</text>
+<text x="850" y="531" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#203f67" text-anchor="middle">LLM → structured intent only</text>
+<text x="540" y="497" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#526073" text-anchor="middle">Second tool call / direct task control</text>
+<text x="850" y="565" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#526073" text-anchor="middle">Transaction + receipts</text>
+<text x="337" y="600" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#526073" text-anchor="middle">Consent</text>
+<text x="550" y="706" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#526073" text-anchor="middle">Review exact proposal before changing commitments</text>
+<text x="40" y="792" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#526073" text-anchor="start">WHAT THE HOUSEHOLD SEES</text>
+<text x="40" y="824" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#17263f" text-anchor="start">Grounded reply • next actions • checked timeline • saved progress • actual system receipts</text>
+<text x="40" y="856" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="400" fill="#526073" text-anchor="start">Passing time never completes a physical chore. Generated plans use estimates, not appliance telemetry.</text>
+<rect x="40" y="887" width="1540" height="83" rx="10" fill="#fff7ef" stroke="#d7a47f" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="60" y="916" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#98491e" text-anchor="start">VERIFIED MCP IMPLEMENTATION — 13 TOOLS</text>
+<text x="60" y="946" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="400" fill="#17263f" text-anchor="start">Independent SDK client • protocol 2025-11-25 • Streamable HTTP • the same checked household state.</text>
+<text x="40" y="1002" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="400" fill="#526073" text-anchor="start">Localhost Alexa+ simulator with real MCP. Hosted AI sends request + mission context. No native Alexa, AWS or IntentSeal integration.</text>
+</svg>

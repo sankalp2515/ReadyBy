@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-23T07:24:00.818Z",
+  "provider": "nvidia",
+  "model": "openai/gpt-oss-20b",
+  "scope": "Six-case provider screening; no household mutations",
+  "total": 6,
+  "passed": 1,
+  "medianMs": 3510,
+  "p95Ms": 3510,
+  "results": [
+    {
+      "text": "The washer still has fifteen minutes left",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 15,
+        "kind": "release"
+      },
+      "pass": false,
+      "error": "NVIDIA NIM did not respond in time. No mission change was applied. Retry or use task controls.",
+      "latencyMs": 18100
+    },
+    {
+      "text": "Make laundry essential",
+      "expected": {
+        "action": "edit_task",
+        "taskId": "laundry",
+        "field": "required",
+        "value": true
+      },
+      "pass": false,
+      "error": "NVIDIA NIM did not respond in time. No mission change was applied. Retry or use task controls.",
+      "latencyMs": 18004
+    },
+    {
+      "text": "Maybe Arun packed lunch",
+      "expected": {
+        "action": "clarify"
+      },
+      "pass": false,
+      "error": "NVIDIA NIM did not respond in time. No mission change was applied. Retry or use task controls.",
+      "latencyMs": 18004
+    },
+    {
+      "text": "No, keep the current commitments",
+      "expected": {
+        "action": "reject"
+      },
+      "pass": false,
+      "error": "NVIDIA NIM did not respond in time. No mission change was applied. Retry or use task controls.",
+      "latencyMs": 18025
+    },
+    {
+      "text": "Yes, defer the laundry and keep our departure",
+      "expected": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "actual": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "normalizations": [],
+      "pass": true,
+      "latencyMs": 3510
+    },
+    {
+      "text": "The washing cycle needs 19 more minutes",
+      "expected": {
+        "action": "delay",
+        "taskId": "laundry",
+        "minutes": 19,
+        "kind": "release"
+      },
+      "pass": false,
+      "error": "NVIDIA NIM did not respond in time. No mission change was applied. Retry or use task controls.",
+      "latencyMs": 18018
+    }
+  ]
+}

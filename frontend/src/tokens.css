@@ -1,0 +1,10 @@
+:root {
+  --navy: #102638;
+  --ink: #172b46;
+  --canvas: #f5f7fb;
+  --muted: #60728a;
+  --blue: #386eab;
+  --border: #e5eaf2;
+  --font: "Segoe UI Variable Text", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}

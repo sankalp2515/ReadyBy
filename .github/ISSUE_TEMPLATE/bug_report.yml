@@ -1,0 +1,22 @@
+name: Bug report
+description: Report reproducible behavior using synthetic household data.
+body:
+  - type: markdown
+    attributes:
+      value: Please keep credentials, account records and real household data out of reports. Use SECURITY.md for sensitive vulnerabilities.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps and synthetic example
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version, operating system, Node and browser

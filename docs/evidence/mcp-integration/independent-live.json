@@ -1,0 +1,221 @@
+{
+  "at": "2026-10-23T07:42:09.757Z",
+  "scope": "Independent official SDK client; actual hosted interpretation and bounded follow-up; scripted fixture/confirmation, not a human voice demo",
+  "negotiatedProtocol": "2025-11-25",
+  "discoveredTools": [
+    "readyby_interpret_request",
+    "readyby_get_mission",
+    "readyby_report_progress",
+    "readyby_report_delay",
+    "readyby_edit_task",
+    "readyby_set_availability",
+    "readyby_recalculate",
+    "readyby_commit_proposal",
+    "readyby_reject_proposal",
+    "readyby_start_mission",
+    "readyby_draft_mission",
+    "readyby_advance_demo",
+    "readyby_resume_deferred"
+  ],
+  "openingFinish": 499,
+  "disruptedFinish": 508,
+  "retainedWorkFinish": 496,
+  "approvedMissionId": "119308ac-45eb-404c-82ae-73016aa2fe78",
+  "essentialDeferralAvailable": false,
+  "deadlineRemains": 500,
+  "trace": [
+    {
+      "method": "initialize",
+      "status": 200,
+      "latencyMs": 9
+    },
+    {
+      "method": "notifications/initialized",
+      "status": 202,
+      "latencyMs": 8
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "latencyMs": 11
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 7
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_interpret_request",
+      "status": 200,
+      "latencyMs": 720
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 13
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_interpret_request",
+      "status": 200,
+      "latencyMs": 8
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_report_delay",
+      "status": 200,
+      "latencyMs": 10
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_interpret_request",
+      "status": 200,
+      "latencyMs": 1557
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 11
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_commit_proposal",
+      "status": 200,
+      "latencyMs": 8
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_report_delay",
+      "status": 200,
+      "latencyMs": 9
+    }
+  ],
+  "receipts": [
+    {
+      "id": "2a7d2706-327e-405d-83f7-a02f3f3cc00b",
+      "kind": "ai",
+      "provider": "Groq",
+      "hosted": true,
+      "model": "openai/gpt-oss-120b",
+      "latencyMs": 711,
+      "attempts": [
+        {
+          "provider": "groq",
+          "latencyMs": 711,
+          "status": "success"
+        }
+      ],
+      "rawIntent": {
+        "action": "clarify",
+        "question": "How many additional minutes should the laundry task be extended by?"
+      },
+      "intent": {
+        "action": "clarify",
+        "question": "How many additional minutes should the laundry task be extended by?"
+      },
+      "normalizations": [],
+      "at": "2026-10-23T07:42:08.112Z",
+      "tool": "get_mission",
+      "revision": 2,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_get_mission",
+        "requestId": "4",
+        "at": "2026-10-23T07:42:08.121Z"
+      }
+    },
+    {
+      "id": "af658583-eaef-4f02-af3d-67c502bfe906",
+      "kind": "conversation",
+      "provider": "Bounded clarification resolver",
+      "latencyMs": 0,
+      "intent": {
+        "action": "delay",
+        "taskId": "laundry",
+        "kind": "release",
+        "minutes": 15
+      },
+      "at": "2026-10-23T07:42:08.135Z",
+      "normalizations": [
+        "Explicit duration answered the current washer question; no new AI call"
+      ],
+      "tool": "delay",
+      "revision": 3,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_report_delay",
+        "requestId": "6",
+        "at": "2026-10-23T07:42:08.143Z"
+      }
+    },
+    {
+      "id": "04caad17-2ae9-4a48-86e8-beb2c0791dbe",
+      "kind": "ai",
+      "provider": "Google Gemini",
+      "hosted": true,
+      "model": "gemini-3.1-flash-lite",
+      "latencyMs": 1552,
+      "attempts": [
+        {
+          "provider": "groq",
+          "reason": "HTTP 429",
+          "latencyMs": 21
+        },
+        {
+          "provider": "gemini",
+          "latencyMs": 1529,
+          "status": "success"
+        }
+      ],
+      "rawIntent": {
+        "action": "approve",
+        "optionKind": "defer"
+      },
+      "intent": {
+        "action": "clarify",
+        "question": "Please review the proposed change and choose Approve this revision. Your commitments have not changed."
+      },
+      "normalizations": [
+        "Conversational approval requires review of the exact proposal in the confirmation interface"
+      ],
+      "at": "2026-10-23T07:42:09.706Z",
+      "tool": "get_mission",
+      "revision": 3,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_get_mission",
+        "requestId": "8",
+        "at": "2026-10-23T07:42:09.715Z"
+      }
+    },
+    {
+      "id": "7bb5b398-b3c1-49cb-92da-a62737d0bc41",
+      "kind": "domain",
+      "tool": "approve",
+      "revision": 4,
+      "mcp": {
+        "protocol": "2025-11-25",
+        "transport": "Streamable HTTP",
+        "method": "tools/call",
+        "tool": "readyby_commit_proposal",
+        "requestId": "9",
+        "at": "2026-10-23T07:42:09.730Z"
+      },
+      "approval": {
+        "source": "explicit review interface",
+        "proposalId": "d232b75c-f14f-4b76-9715-2173b7addd95",
+        "revision": 3
+      }
+    }
+  ]
+}

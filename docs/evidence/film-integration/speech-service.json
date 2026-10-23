@@ -1,0 +1,17 @@
+{
+  "fixture": "Microsoft Zira Desktop synthesized Fifteen minutes; not microphone speech",
+  "health": {
+    "available": true,
+    "provider": "Vosk local",
+    "sampleRate": 16000,
+    "maxSeconds": 20
+  },
+  "status": 200,
+  "result": {
+    "text": "fifteen minutes",
+    "provider": "Vosk local",
+    "model": "vosk-model-small-en-us-0.15",
+    "latencyMs": 861
+  },
+  "at": "2026-10-22T19:54:06.441Z"
+}
