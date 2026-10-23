@@ -1,3 +1,5 @@
+> Historical review of the imagined reference film, not the current product or final submission video. Current testing instructions: [judge guide](JUDGE_GUIDE.md). Contact sheets named below are local work products, not public repository assets.
+
 # ReadyBy film review and Alexa+ simulation direction
 
 Reviewed 23 October 2026. Source: `E:\Codex Projects\ReadyBy-Film-2026\renders\ReadyBy-Product-Demo-1080p.mp4`.
@@ -10,7 +12,7 @@ The supplied MP4 is 150.000 seconds, H.264, 1920 × 1080, 30 fps, with AAC audio
 
 The film README explicitly says it is an authored visualization based on a brief and that the application repository was not inspected. I compared it with the current React workspace source, backend/agent source and saved v0.2 audit screenshot. I did not run a new browser or model test for this review. No application behavior was changed.
 
-Extracted evidence: [first contact sheet](evidence/film-review/contact-1.jpg), [middle contact sheet](evidence/film-review/contact-2.jpg), [last contact sheet](evidence/film-review/contact-3.jpg).
+Extracted evidence: first contact sheet (local historical file: `evidence/film-review/contact-1.jpg`), middle contact sheet (local historical file: `evidence/film-review/contact-2.jpg`), last contact sheet (local historical file: `evidence/film-review/contact-3.jpg`).
 
 ## What is strong, and what to bring into the product
 

@@ -1,10 +1,10 @@
 # Contributing to ReadyBy
 
-ReadyBy is a local beta focused on checked household deadline recovery. Start with the [README](README.md), [setup](docs/SETUP.md), [architecture](docs/architecture/README.md) and [MCP guide](docs/MCP.md).
+ReadyBy is a hosted and locally runnable beta focused on checked household deadline recovery. Start with the [README](README.md), [setup](docs/SETUP.md), [architecture](docs/architecture/README.md) and [MCP guide](docs/MCP.md).
 
 ## Development
 
-Use Node 22.20+ and pnpm 11.25.0. Install with `pnpm install --frozen-lockfile`, then run `pnpm typecheck`, `node --test` and `pnpm build`. `pnpm dev` starts the frontend development server; the documented full application is `node app-server.mjs` after a build.
+Use Node 22.20+ and pnpm 11.25.0. Install with `pnpm install --frozen-lockfile`, then run `pnpm typecheck`, `pnpm test` and `pnpm build`. `pnpm dev` starts the frontend development server; the documented full application is `node app-server.mjs` after a build.
 
 Automated tests use provider doubles. Do not require contributor credentials or paid APIs in CI. Live provider evaluations consume quota and must be run deliberately with your own server-side credentials. Do not overwrite recorded evidence without explaining the new run and its conditions.
 

@@ -1,3 +1,5 @@
+> Historical 22 October design audit. Current hosted interface and voice evidence: [0.4 verification](READYBY_0_4_VERIFICATION.md). Audit screenshots named below remain local work products.
+
 # ReadyBy — Product Design audit and fixes
 
 22 October 2026. Scope: choose a recovery, approve it and understand the saved result. Captured in the in-app browser during this audit, then repaired and recaptured. Existing user progress was preserved; a separate demo mission was used. No external publication.
@@ -33,19 +35,19 @@ Deadline and consequence are easy to locate. Observed progress remains distinct 
 
 ### 1. Compare recovery choices
 
-![Recovery choices after the audit](<E:/Codex Projects/Amazon-Hackathon/docs/evidence/product-design-audit/01-recovery-after.png>)
+Recovery choices after the audit — local historical file: `docs/evidence/product-design-audit/01-recovery-after.png`.
 
 ### 2. Review and approve
 
-![Named approval dialog with visible keyboard focus](<E:/Codex Projects/Amazon-Hackathon/docs/evidence/product-design-audit/02-approval-after.png>)
+Named approval dialog with visible keyboard focus — local historical file: `docs/evidence/product-design-audit/02-approval-after.png`.
 
 ### 3. Understand what was saved
 
-![Saved result with explicit unfinished-work context](<E:/Codex Projects/Amazon-Hackathon/docs/evidence/product-design-audit/03-saved-after.png>)
+Saved result with explicit unfinished-work context — local historical file: `docs/evidence/product-design-audit/03-saved-after.png`.
 
 Phone verification of Step 3:
 
-![Saved result at 390 pixels wide](<E:/Codex Projects/Amazon-Hackathon/docs/evidence/product-design-audit/03-saved-mobile.png>)
+Saved result at 390 pixels wide — local historical file: `docs/evidence/product-design-audit/03-saved-mobile.png`.
 
 ## Evidence and limits
 

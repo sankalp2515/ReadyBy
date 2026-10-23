@@ -23,7 +23,7 @@
   "type": "module",
   "scripts": {
     "start": "node app-server.mjs",
-    "test": "node --test",
+    "test": "node --test tests/*.test.mjs",
     "evaluate": "node scripts/evaluate.mjs",
     "evaluate:ai": "node scripts/evaluate-ai.mjs",
     "legacy": "node server.mjs",

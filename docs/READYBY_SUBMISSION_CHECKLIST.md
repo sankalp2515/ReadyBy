@@ -1,28 +1,39 @@
-# ReadyBy — remaining submission steps
+# ReadyBy — submission verification checklist
 
-Checked 23 October 2026 against the [official rules](https://amazonappdev2026.devpost.com/rules), [submission requirements](https://amazonappdev2026.devpost.com/#requirements) and [FAQ](https://amazonappdev2026.devpost.com/details/faqs). This is a preparation checklist; no signed-in submission form or actual submitted status has been verified.
+Current implementation: **0.4.0**, [public source](https://github.com/sankalp2515/ReadyBy), [versioned release](https://github.com/sankalp2515/ReadyBy/releases/tag/v0.4.0), and [hosted judge beta](https://34-10-147-168.sslip.io/). This checklist does not confirm that a Devpost entry was submitted.
 
-## Apart from GitHub publication and the final video
+Use [the judge guide](JUDGE_GUIDE.md) for exact testing steps and [current Devpost copy](READYBY_DEVPOST_FINAL.md) for prepared form answers. The earlier 0.3 submission draft is historical.
 
-1. Verify Devpost registration and complete entrant/team details; designate the representative if entering as a team. Confirm eligibility and rights.
-2. Select Alexa+ as primary track. Describe the entry as a working self-hosted MCP server demonstrated through our own Alexa+ web simulator. Do not claim native Echo connectivity.
-3. Complete the project description from READYBY_SUBMISSION.md: customer problem, functionality, architecture, meaningful differentiator, actual validation and limitations. State event-window work accurately and distinguish any pre-existing material. Choose current product screenshots and the architecture image for a clear presentation.
-4. Complete mandatory product feedback for the tools/APIs/SDKs actually used: use, what worked, what needs work, onboarding and whether we would use them again. Start from READYBY_PRODUCT_FEEDBACK.md. Include the actual MCP SDK and model providers; avoid claiming gated Alexa tooling or AWS use.
-5. Add genuine, relevant friction entries as the optional judging-bonus evidence: task, steps, expected/actual, severity, workaround and actionable suggestion. The bonus is assessed, not automatic.
-6. Select the Open Source mini-challenge if entering IntentSeal. Supply its contribution URL, project repository URL, GitHub username and explanation of what changed/how it works/why it matters. Use the reviewed links in READYBY_SUBMISSION.md and confirm entrant authorship/rights. Do not select AWS Builder for this implementation.
-7. Supply exact testing instructions: Node 22.20+, frozen pnpm install, build, server startup, private demo, MCP SDK script, demo chapter labels and expected recovery. Full language interaction needs a configured hosted provider or installed local Ollama model. Do not put keys in public files. Ordinary typed controls/MCP smoke tests work without an LLM. Human microphone rehearsal is needed only if speech is featured.
-8. Review all required signed-in form fields, links and access as a judge would. Public source needs its license; private source needs the specified reviewers. Keep the submitted version identifiable and available through judging. Finalize and verify the entry is submitted rather than saved as a draft before **24 October 2026, 00:30 IST**.
+## Repository and access
 
-## Hosting decision
+- Public GitHub repository with a detectable MIT license, complete source, locked dependencies and setup instructions.
+- Original implementation identifiable as **v0.4.0**, commit **d6adb474cf35376ecbfc011b7f6bbbe9369ddeea**. Preserve the tag and original release assets; documentation cleanup must not replace them.
+- Hosted guest demo needs no signup or judge-supplied credentials. Provider keys remain server-side. Local reproduction requires a provider or Ollama for language interaction and a funded Gemini key for live voice.
+- Current setup, MCP transport, voice data flow and limitations are documented. No native Echo connection, appliance telemetry or AWS integration is claimed.
 
-The FAQ explicitly says locally runnable public source plus video is enough, and that the MCP server need not stay online after submission. The server can run on the developer's own machine. A web page sending real initialization, discovery and tool calls is an accepted demonstration; native Alexa developer access is partner-gated.
+## Verify in the Devpost entry
 
-For our local demo, start `node app-server.mjs`, open `http://127.0.0.1:4173/`, and use READYBY_DEMO_RUNBOOK.md. The React client calls `/mcp` on that local Node backend. Hosted model inference still needs internet; MCP itself does not need a public URL.
+- Entrant/team details, representative, eligibility and rights are correct.
+- Primary track is **Alexa+**, described as a working self-hosted MCP server demonstrated through our own web simulation.
+- Repository URL, hosted demo URL and exact testing instructions are present and accessible.
+- Product description explains the customer problem, checked recovery, review/approval, preserved progress and essential-task counterexample.
+- Product feedback answers all five required questions for the tools, APIs and SDKs actually used. Concrete developer friction is described accurately; no bonus is guaranteed.
+- Public YouTube/Vimeo URL points to the selected working-product demonstration, under three minutes. Verify visibility, audio, captions and media rights. A local MP4 path is not a submission URL. Video clarity, owner approval and public availability must be verified independently; generating a file does not establish those checks.
+- Gallery images match the product and have accurate captions. The old 0.3 architecture PNG predates live voice; use the current architecture documentation for the implemented system.
+- Confirm the entry is **submitted**, not merely saved as a draft. Keep the confirmation and accepted submission URL. This repository audit does not establish that status.
 
-An optional hosted demo would deploy the entire Node application plus built frontend, HTTPS, server-side secrets and persistent SQLite storage. The current launcher binds to loopback, so remote exposure requires a deliberate deployment configuration and verification. Static frontend-only hosting cannot run this backend, MCP endpoint or SQLite. Do not present a localhost link as remote judge access.
+## Optional Open Source mini-challenge
 
-Recommendation: finish the entry and convincing live local take first. Add an optional hosted demo only if it can be tested without delaying the submission. Hosting itself is not evidence of customer value.
+IntentSeal is a separate candidate, not a ReadyBy runtime dependency. If entered, provide the contribution URL, project repository URL, GitHub username and explanation of what changed, how it works and why it matters. Verify authorship, rights and event-window work.
 
-## Convincing Alexa+ simulation
+- Project: https://github.com/sankalp2515/intentseal
+- Contribution: https://github.com/sankalp2515/intentseal/commit/43a188ca68deca6aa2ebd662db20490e596cc67a
+- Username: `sankalp2515`
 
-Use the household display as the shared visual surface. Show a real incomplete request, missing-minutes clarification, stateful follow-up and checked proposal. Show natural consent opening review, exact approval, saved completion and unfinished deferred laundry. Inspect actual MCP/provider receipts briefly. In the separate essential case, refuse deferral and preserve the unapproved departure. Seeded progress and cuts must be labelled. Rehearse actual local speech and spoken output before featuring them; do not imply a native wake word or native Alexa voice is connected.
+Do not select AWS Builder based on this Google Cloud implementation alone.
+
+## Rules and hosting
+
+The [official rules](https://amazonappdev2026.devpost.com/rules) specify repository access, the demonstration video and product feedback. The [official FAQ](https://amazonappdev2026.devpost.com/details/faqs) accepts an Alexa+ web simulation and locally runnable source; hosting and a continuously running MCP server are not required. Our public HTTPS deployment reduces judge setup effort, but does not establish customer demand or a prize outcome.
+
+The published submission deadline was **23 October 2026, 19:00 UTC / 24 October 2026, 00:30 IST**. Do not imply later repository cleanup was completed before that deadline. Verify any entry changes or organizer extensions directly in Devpost.

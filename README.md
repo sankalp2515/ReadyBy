@@ -7,7 +7,7 @@
 
 ### A shared deadline. A plan that adapts.
 
-**Tell ReadyBy what changed. Review a checked recovery. Keep the household moving.**
+**When a chore runs late, ReadyBy checks how your household can still leave on time—and asks before changing the plan.**
 
 [![CI](https://github.com/sankalp2515/ReadyBy/actions/workflows/ci.yml/badge.svg)](https://github.com/sankalp2515/ReadyBy/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/sankalp2515/ReadyBy?color=9b753a)](https://github.com/sankalp2515/ReadyBy/releases)
@@ -15,7 +15,7 @@
 [![Node](https://img.shields.io/badge/Node.js-22.20%2B-496b58?logo=nodedotjs&logoColor=white)](package.json)
 [![MCP](https://img.shields.io/badge/MCP-2025--11--25-223e58)](docs/MCP.md)
 
-[Live demo](https://34-10-147-168.sslip.io/) · [Quick start](#quick-start) · [Try the scenario](#try-the-recovery) · [Architecture](docs/architecture/README.md) · [MCP tools](docs/MCP.md) · [Evidence](docs/READYBY_MCP_VERIFICATION.md) · [Release](https://github.com/sankalp2515/ReadyBy/releases/tag/v0.4.0)
+[Live demo](https://34-10-147-168.sslip.io/) · [Judge guide](docs/JUDGE_GUIDE.md) · [Quick start](#quick-start) · [Try the scenario](#try-the-recovery) · [Architecture](docs/architecture/README.md) · [MCP tools](docs/MCP.md) · [Evidence](docs/READYBY_MCP_VERIFICATION.md) · [Release](https://github.com/sankalp2515/ReadyBy/releases/tag/v0.4.0)
 
 <img src="docs/evidence/live-voice/desktop.png" alt="Actual hosted ReadyBy 0.4 household display with real-time voice entry, guided chapters and a saved checked recovery finishing at 08:16" width="960">
 
@@ -24,6 +24,12 @@
 </div>
 
 ---
+
+## Understand ReadyBy in one minute
+
+You need to leave at **08:20**. The washer is running late. Tell ReadyBy **“The washer has another fifteen minutes left.”** It checks the shared schedule and shows the choice: finish everything at **08:28**, or save flexible laundry for later and finish departure work at **08:16**. You review and approve; completed work stays complete and laundry stays unfinished. If laundry is essential, that shortcut is unavailable.
+
+**For judges:** [open the no-signup demo](https://34-10-147-168.sslip.io/), choose **2 · Washer delay**, then speak or type the sentence above. [The judge guide](docs/JUDGE_GUIDE.md) gives the exact steps, expected results and technical proof.
 
 ## Why ReadyBy
 
@@ -131,11 +137,11 @@ Detailed configuration, accounts, backups and speech: [setup guide](docs/SETUP.m
 ## Try the recovery
 
 1. Explore a private demo. The opening plan checks **08:19** for an **08:20** departure.
-2. In **Review system**, choose **2 · Washer disruption**. This explicitly seeds 08:06 and reported bag/lunch completion; it does not fabricate a model response.
+2. In the household display, choose **2 · Washer delay**. This explicitly seeds 08:06 and reported bag/lunch completion; it does not fabricate a model response.
 3. Return to the household display. Enter **“The washer needs more time.”** When asked, answer **“Fifteen minutes.”** The scoped follow-up avoids another model call.
 4. Inspect full finish **08:28** and the proposed **08:16** recovery. Say **“Yes.”** Review opens; the proposal has not been applied.
 5. Confirm **Approve this revision**. Laundry becomes deferred and unfinished. Completed reports and the 08:20 departure remain intact. Reload to inspect saved state.
-6. In a separate labelled **Essential laundry** chapter, report the same delay. The system must acknowledge the conflict rather than defer essential work.
+6. After checking persistence, choose **3 · Essential stays protected**; this replaces the current demo chapter. Then report the same delay. The system must acknowledge the conflict rather than defer essential work.
 
 <table>
 <tr>
@@ -150,7 +156,21 @@ The walkthrough uses actual captured states and is explicitly labelled as not a 
 
 ## Architecture
 
-<div align="center"><img src="docs/architecture/readyby-actual-architecture.png" alt="ReadyBy system architecture: simulator MCP client, hosted or local interpretation, scoped prepared tool calls, checked planning, exact proposal review and SQLite" width="1080"></div>
+```mermaid
+flowchart LR
+  person[Household member] --> ui[ReadyBy web simulation]
+  ui <-->|Audio with ephemeral credential| voice[Gemini Live]
+  voice -->|Heard transcript through browser bridge| mcp[MCP server /mcp]
+  ui -->|Typed requests and controls| mcp
+  mcp --> intent[Groq / Gemini intent validation]
+  intent --> planner[Deterministic planner + independent checker]
+  planner --> proposal[Checked proposal]
+  proposal --> review[On-screen review and approval]
+  review -->|Exact revision confirmation via MCP| state[(SQLite state and receipts)]
+  state --> ui
+```
+
+[Current architecture and source map](docs/architecture/README.md) · [Voice and credential flow](docs/LIVE_VOICE.md). The hosted application runs on Google Cloud Compute Engine with Caddy HTTPS; the retained 0.3 PNG in the architecture folder predates live voice.
 
 1. **Interpret.** A real model extracts a constrained intent; semantic validation asks for missing information instead of guessing.
 2. **Prepare and execute.** The interpretation tool returns a short-lived call bound to session, household, mission, revision and arguments. The MCP client invokes the selected typed tool.
@@ -173,7 +193,7 @@ These official-SDK clients create private demo sessions, initialize, list tools 
 ## Evidence and verification
 
 ```bash
-node --test
+pnpm test
 pnpm typecheck
 pnpm build
 ```
@@ -202,6 +222,8 @@ The hosted beta uses a single Compute Engine VM behind Caddy, production secure 
 
 | Guide | Contents |
 | --- | --- |
+| [Judge guide](docs/JUDGE_GUIDE.md) | Exact hosted-demo steps, expected outcomes and evidence |
+| [Documentation index](docs/README.md) | Current guides and clearly labelled historical records |
 | [Setup](docs/SETUP.md) | Providers, speech, accounts, backups and local operation |
 | [MCP integration](docs/MCP.md) | Tool catalogue, protocol, client and confirmation boundaries |
 | [Architecture](docs/architecture/README.md) | Implemented system and source map |

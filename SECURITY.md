@@ -2,7 +2,7 @@
 
 ## Supported scope
 
-The current development line is **0.3.x**. Earlier prototypes remain for historical context. ReadyBy is a loopback-operated beta; native Alexa OAuth, a public deployment, production load and formal security certification are not provided.
+The current development line is **0.4.x**, with a public single-server judge beta and a locally runnable application. The immutable v0.4.0 release identifies the original implementation. Native Alexa OAuth, production-scale validation and formal security certification are not provided.
 
 ## Report a vulnerability privately
 
@@ -16,7 +16,7 @@ Include affected version/commit, a minimal synthetic reproduction, expected/obse
 - Household sessions, CSRF/origin checks and revision/idempotency boundaries are enforced.
 - A trusted first-party review flow issues an exact-proposal confirmation; this is not cryptographic human-presence verification.
 - Local SQLite files, account records, recovery codes and backups require the operator's filesystem protection.
-- Hosted inference sends bounded text/task context to the selected provider. Optional speech is local to the Node deployment; a future remote deployment changes where audio is processed.
-- Public hosting requires additional deployment, durable-storage and authentication verification. Do not expose the development server by disabling its protections.
+- Hosted inference sends bounded text/task context to the selected provider. Live voice streams audio from the browser to Google using a short-lived credential. ReadyBy does not store raw microphone audio; transcripts and action receipts are persisted. Optional Vosk transcription runs on the ReadyBy server.
+- The hosted beta uses HTTPS, secure cookies, origin checks, usage allowances and durable SQLite on a single VM. Same-disk backups are not disaster recovery; independent load and broader security reviews remain outstanding. Do not expose development servers by disabling their protections.
 
 See [MCP boundaries](docs/MCP.md) and [hosting prerequisites](docs/HOSTING.md).

@@ -1,3 +1,5 @@
+> Historical version 0.3 draft. Use [the current Devpost copy](READYBY_DEVPOST_FINAL.md), [judge guide](JUDGE_GUIDE.md) and [submission checklist](READYBY_SUBMISSION_CHECKLIST.md). This document records earlier scope and is not current submission guidance.
+
 # ReadyBy — submission draft, version 0.3
 
 Prepared on 23 October 2026. Source repository: [sankalp2515/ReadyBy](https://github.com/sankalp2515/ReadyBy), release v0.3.0. Final public video upload and Devpost submission remain pending. Start with `READYBY_FINAL_HANDOFF.md` and `READYBY_MCP_VERIFICATION.md`.

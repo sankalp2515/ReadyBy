@@ -1,3 +1,5 @@
+> Historical 22 October evaluation. Current implementation evidence: [0.4 verification](READYBY_0_4_VERIFICATION.md). Historical raw captures named below are local work products and are not included in the public repository.
+
 # ReadyBy evaluation — completed local checks
 
 22 October 2026. These results describe the implementation and environment actually exercised. They do not establish household adoption, production security, or general language reliability.
@@ -18,7 +20,7 @@ Current interface/storage verification is in [READYBY_V2_VERIFICATION.md](READYB
 - Progress survives browser reload and server restart; the API restart case is automated.
 - Stale approvals/writes, duplicate actions, invalid prerequisites, release constraints, failed storage writes, corrupt storage, negative/ambiguous completion, paused segments and implicit final-barrier cycles are covered.
 
-Evidence: [test output](evidence/tests.tap), [oracle report](evidence/system-evaluation.json).
+Evidence: test output (local historical file: `evidence/tests.tap`), oracle report (local historical file: `evidence/system-evaluation.json`).
 
 ## Actual AI evaluation
 
@@ -32,7 +34,7 @@ The tested pipeline includes transparent policy handling, not only raw model out
 
 Earlier findings included incorrect action/field choices, invented example values, and slower/lower-performing larger-model behavior. These motivated deterministic validation and retaining the smaller measured runtime. Failed model calls do not become successful household actions.
 
-Evidence: [final AI report](evidence/ai-evaluation.json), earlier `ai-evaluation-*.json` files, and [actual browser mission export](evidence/live-browser-mission.json).
+Evidence: final AI report (local historical file: `evidence/ai-evaluation.json`), earlier `ai-evaluation-*.json` files, and actual browser mission export (local historical file: `evidence/live-browser-mission.json`).
 
 ## Browser verification
 

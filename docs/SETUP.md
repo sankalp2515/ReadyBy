@@ -6,7 +6,7 @@ ReadyBy 0.4 is an Alexa+ experience simulator backed by a **real self-hosted MCP
 
 A public judge beta is also [hosted over HTTPS](HOSTING.md). Native Alexa/Echo connectivity, appliance telemetry and AWS are not implemented. Local installations keep their own household storage; hosted text AI sends the request and bounded mission context to its provider. Gemini Live voice streams microphone audio to Google while connected. Select Ollama for local text inference.
 
-Start with [0.4 verification](READYBY_0_4_VERIFICATION.md), [retained 0.3 MCP verification](READYBY_MCP_VERIFICATION.md), [final handoff](READYBY_FINAL_HANDOFF.md), and the [architecture](architecture/readyby-actual-architecture.png). Earlier v0.1/v0.2 reports are historical.
+Start with [0.4 verification](READYBY_0_4_VERIFICATION.md), [retained 0.3 MCP verification](READYBY_MCP_VERIFICATION.md), [final handoff](READYBY_FINAL_HANDOFF.md), and the [current architecture](architecture/README.md). Earlier v0.1/v0.2 reports are historical.
 
 ## Run
 
@@ -49,11 +49,11 @@ Tested with Python 3.12 on Windows. Setup creates `.venv-speech` and downloads a
 ## Reproduce the recovery
 
 1. Explore a private demo. Checked opening finish: 08:19 for an 08:20 departure.
-2. **Review system → 2 · Washer disruption** explicitly seeds 08:06 with reported bag/lunch completion. Labelled chapters do not generate AI responses.
+2. **Review system â†’ 2 Â· Washer disruption** explicitly seeds 08:06 with reported bag/lunch completion. Labelled chapters do not generate AI responses.
 3. Return to Household display and type **The washer needs more time.** The actual model asks for minutes. Answer **fifteen minutes**; a bounded resolver returns the specific delay tool without another model call.
 4. Review full finish 08:28 versus retained-work finish 08:16. Laundry stays pending until consent. A natural-language yes opens review, rather than applying the trade-off.
 5. Choose **Approve this revision**. The confirmed MCP tool keeps departure 08:20 and marks laundry deferred and unfinished. Completed reports stay intact. Reload or restart to inspect saved state.
-6. In a separate demo, load **3 · Essential laundry** and report the same delay. There is no deferral option; later departure requires agreement.
+6. In a separate demo, load **3 Â· Essential laundry** and report the same delay. There is no deferral option; later departure requires agreement.
 7. **Review system** exposes actual protocol discovery, selected tools, provider receipts and checked constraints. Direct controls are distinguished from AI interpretation.
 
 Task times are editable estimates, not measured real-world savings. Passing time never completes a physical chore. One or two adults, up to eight tasks, integer minutes, prerequisites, passive waits, availability and a final check are supported. Bounded search can report uncertainty.
@@ -74,7 +74,7 @@ The endpoint is `/mcp`; `GET /api/mcp` describes it for an authenticated househo
 ## Verify
 
 ```powershell
-node --test
+pnpm test
 pnpm typecheck
 pnpm build
 node scripts/benchmark-providers.mjs groq --full --fallback
