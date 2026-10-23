@@ -4,6 +4,7 @@ ReadyBy's original source is licensed under MIT. Third-party components retain t
 
 | Component | Use | License |
 | --- | --- | --- |
+| Google Gen AI SDK | Gemini Live audio and ephemeral credentials | Apache-2.0 |
 | Model Context Protocol TypeScript SDK | Real MCP client/server and Streamable HTTP | MIT |
 | React and React DOM | Household web interface | MIT |
 | Zod | Typed protocol validation | MIT |

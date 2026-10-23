@@ -1,3 +1,5 @@
+> Historical 0.3 handoff. Current hosted voice and UI status: [0.4 verification](READYBY_0_4_VERIFICATION.md), [hosting](HOSTING.md), [live voice](LIVE_VOICE.md).
+
 # ReadyBy 0.3 — current local handoff
 
 23 October 2026. ReadyBy is an Alexa+ simulator with a working self-hosted MCP server. This replaces the earlier simulation-only recommendation. No native Alexa connection, AWS integration or final hackathon submission is claimed.

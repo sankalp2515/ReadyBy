@@ -1,6 +1,6 @@
 {
   "name": "readyby",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A deadline-aware household assistant with checked recovery, explicit review and a real MCP server for an Alexa+ web simulator.",
   "license": "MIT",
   "packageManager": "pnpm@11.25.0",
@@ -11,8 +11,14 @@
   "bugs": {
     "url": "https://github.com/sankalp2515/ReadyBy/issues"
   },
-  "homepage": "https://github.com/sankalp2515/ReadyBy#readme",
-  "keywords": ["alexa-plus", "mcp", "household", "scheduling", "ai-agents"],
+  "homepage": "https://34-10-147-168.sslip.io/",
+  "keywords": [
+    "alexa-plus",
+    "mcp",
+    "household",
+    "scheduling",
+    "ai-agents"
+  ],
   "private": true,
   "type": "module",
   "scripts": {
@@ -33,6 +39,7 @@
     "node": ">=22.20.0"
   },
   "dependencies": {
+    "@google/genai": "2.31.0",
     "@modelcontextprotocol/sdk": "1.32.1",
     "lucide-react": "1.61.0",
     "react": "19.3.1",

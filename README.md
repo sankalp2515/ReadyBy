@@ -15,9 +15,9 @@
 [![Node](https://img.shields.io/badge/Node.js-22.20%2B-496b58?logo=nodedotjs&logoColor=white)](package.json)
 [![MCP](https://img.shields.io/badge/MCP-2025--11--25-223e58)](docs/MCP.md)
 
-[Quick start](#quick-start) · [Try the scenario](#try-the-recovery) · [Architecture](docs/architecture/README.md) · [MCP tools](docs/MCP.md) · [Evidence](docs/READYBY_MCP_VERIFICATION.md) · [Release](https://github.com/sankalp2515/ReadyBy/releases/tag/v0.3.0)
+[Live demo](https://34-10-147-168.sslip.io/) · [Quick start](#quick-start) · [Try the scenario](#try-the-recovery) · [Architecture](docs/architecture/README.md) · [MCP tools](docs/MCP.md) · [Evidence](docs/READYBY_MCP_VERIFICATION.md) · [Release](https://github.com/sankalp2515/ReadyBy/releases/tag/v0.4.0)
 
-<img src="docs/evidence/mcp-integration/12-approved-desktop.png" alt="Actual ReadyBy household display: two completed tasks preserved, laundry saved unfinished for later, remaining work finishing at 08:16 for an 08:20 departure" width="960">
+<img src="docs/evidence/live-voice/desktop.png" alt="Actual hosted ReadyBy 0.4 household display with real-time voice entry, guided chapters and a saved checked recovery finishing at 08:16" width="960">
 
 <sub>Actual captured product state. The labelled school-run fixture seeds time and reported progress; subsequent requests use the real model and household tools.</sub>
 
@@ -42,7 +42,7 @@ These are calculations from editable estimates, not measured time savings. Time 
 
 ## What is real
 
-ReadyBy **0.3.0** is a working Alexa+ web simulator with a self-hosted MCP server, not a native Echo integration.
+ReadyBy **0.4.0** is a working Alexa+ web simulator with a self-hosted MCP server, not a native Echo integration.
 
 | Component | Implemented behavior |
 | --- | --- |
@@ -51,10 +51,11 @@ ReadyBy **0.3.0** is a working Alexa+ web simulator with a self-hosted MCP serve
 | Planning | Deterministic bounded search plus an independent schedule checker. The LLM does not calculate authoritative feasibility. |
 | Consent | Saying “yes” opens review. Committing requires a short-lived, single-use confirmation for the exact proposal and revision. |
 | State | Household-scoped SQLite transactions, revision checks, idempotent requests, history and preserved reported progress. |
-| Interface | Shared household display, conversation, editable routines and inspectable system review. |
-| Optional speech | Local Vosk recognition with transcript review; browser-installed voices for spoken replies. Push-to-talk; no wake word. |
+| Interface | Product landing page with computed examples, guided chapters, voice-first household display, editable routines and inspectable system review. |
+| Live voice | Gemini Live bidirectional audio, interruptible playback, captions, explicit microphone controls and short-lived browser credentials. Heard requests use the same real MCP tools. [Voice architecture](docs/LIVE_VOICE.md). |
+| Optional recorded speech | Vosk recognition on the ReadyBy server with transcript review; browser-installed voices for typed replies. |
 
-Native Alexa account linking, appliance sensors, push notifications, AWS integration and a public hosted deployment are not included. This is a local beta, not a certified or production-launched Alexa add-on.
+The public judge beta runs on Google Cloud with HTTPS and persistent SQLite. Native Alexa account linking, appliance sensors, push notifications and AWS integration are not included. This is an independent Alexa+ simulation, not a certified Alexa add-on.
 
 ## Quick start
 
@@ -68,7 +69,7 @@ pnpm build
 node app-server.mjs
 ```
 
-Open **http://127.0.0.1:4173** and choose **Explore a private demo**. Task controls and the typed MCP demo work without a model or provider key.
+Open **http://127.0.0.1:4173** and choose **Try the live demo**. Task controls and the typed MCP demo work without a model or provider key.
 
 For actual conversation, choose a model configuration below. Node loads `.env` automatically; shell settings take precedence. **Never commit your real `.env`.**
 
@@ -86,7 +87,7 @@ GEMINI_API_KEY=replace_with_your_optional_fallback_key
 READYBY_GEMINI_MODEL=gemini-3.1-flash-lite
 ```
 
-Remove the fallback settings if you do not have a Gemini key. Restart the server after changing configuration. Hosted inference sends the request and bounded task/person context to the actual provider. Quota, terms and billing apply. Keys never reach the browser. Audio stays with the recognizer; a reviewed transcript can be sent as text.
+Remove the fallback settings if you do not have a Gemini key. Restart the server after changing configuration. Hosted inference sends the request and bounded task/person context to the actual provider. Quota, terms and billing apply. Permanent keys never reach the browser. Live voice streams audio to Google using a one-use ephemeral credential; recorded transcription runs on the ReadyBy server. A Gemini key is required for live voice even when typed interpretation uses another provider.
 
 </details>
 
@@ -122,6 +123,8 @@ node app-server.mjs
 Tested with Python 3.12 on Windows. Setup creates an isolated environment and downloads a checksum-verified Vosk English model. Select **Record request**, stop, review/edit the transcript, then send. Spoken replies start off. Raw audio is not saved by the application. Human microphone accuracy and voice quality require your own rehearsal.
 
 </details>
+
+For live voice, add a funded `GEMINI_API_KEY`, restart, choose **Start live voice** and allow microphone access. HTTPS or localhost is required; no wake word is used. Changes to commitments still require exact on-screen approval.
 
 Detailed configuration, accounts, backups and speech: [setup guide](docs/SETUP.md).
 
@@ -179,7 +182,9 @@ Tests use provider doubles and do not require secrets. Live provider reports are
 
 | Evidence | Recorded result | Limit |
 | --- | --- | --- |
-| Isolated source export | **56/56 tests**, typecheck and production build passed | Same Windows host; not a second physical-machine test. CI also checks the published source. |
+| 0.4 automated suite | **64/64 tests**, typecheck and build passed | Includes live credential/auth/quota, preview, provider response failure and consent navigation coverage. |
+| Hosted voice integration | Synthetic audio → actual transcript → MCP → Groq → checked state → spoken Gemini reply | Engineering check; human microphone and noisy-room quality remain unmeasured. [Evidence](docs/READYBY_0_4_VERIFICATION.md). |
+| 0.3 isolated source export | **56/56 tests**, typecheck and production build passed | Same Windows host; not a second physical-machine test. CI also checks the published source. |
 | Selected hosted pipeline | **30/30** development utterances; **1,047 ms** median, **3,821 ms** p95 | Prompt-informed corpus, including validation/normalization; not a held-out benchmark. |
 | Actual browser interpretation | **947 ms** missing-duration turn; **612 ms** natural consent turn | Individual observations, not latency guarantees. |
 | Independent SDK client | Protocol negotiated, **13 tools**, checked recovery and essential protection | CLI confirmation is scripted, not human approval evidence. |
@@ -191,7 +196,7 @@ Earlier provider failures are retained alongside the final reports. [Method, raw
 
 Local execution is sufficient for the hackathon's documented submission path. A deployment can use Google Cloud, AWS or another suitable host; Alexa+ does not require AWS hosting. Native Alexa partner access is a separate matter.
 
-The current launcher binds to loopback and stores state in local SQLite. A public deployment needs verified HTTPS/origin/cookie settings, server-side secrets, durable storage and remote-client testing. Cloud Run's default filesystem is ephemeral; it must not hold the only household database. **This release does not claim a working cloud deployment.** [Hosting decision and deployment prerequisites](docs/HOSTING.md)
+The hosted beta uses a single Compute Engine VM behind Caddy, production secure cookies and origin checks, server-side inference keys, a persistent disk, process supervision and verified database backups. Cloud Run would require a different durable storage design. [Hosting, budget and operational limits](docs/HOSTING.md).
 
 ## Documentation
 

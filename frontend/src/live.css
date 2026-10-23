@@ -1,0 +1,257 @@
+.live-voice {
+  border: 1px solid #d8dfd8;
+  background: #f5f8f3;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.live-voice.is-live {
+  border-color: #4b7d68;
+  box-shadow: 0 0 0 4px #e4ede5;
+}
+.live-intro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.voice-orb {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #183f34;
+  color: #f5ead1;
+}
+.is-live .voice-orb {
+  box-shadow: 0 0 0 8px #dce9dd;
+  animation: voice-breathe 2s ease-in-out infinite;
+}
+.live-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #476557;
+}
+.live-intro h2 {
+  font-size: 24px;
+  margin: 5px 0;
+  letter-spacing: -0.04em;
+  color: #183f34;
+}
+.live-intro p {
+  font-size: 13px;
+  margin: 0;
+  color: #59665d;
+}
+.live-intro button {
+  margin-left: auto;
+  white-space: nowrap;
+}
+.live-disclosure {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #58695e;
+  line-height: 1.65;
+  margin: 18px 0 0;
+}
+.live-disclosure svg {
+  flex-shrink: 0;
+}
+.live-captions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+  border-top: 1px solid #dce5da;
+  padding-top: 15px;
+}
+.live-captions p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  max-height: 150px;
+  overflow: auto;
+}
+.live-captions span {
+  display: block;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #637766;
+  margin-bottom: 5px;
+}
+.demo-chapters {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  padding: 14px 0 20px;
+}
+.demo-chapters > span {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: 5px;
+  color: #5e6b60;
+}
+.demo-chapters button {
+  border: 1px solid #d7dfd4;
+  border-radius: 30px;
+  padding: 9px 14px;
+  background: white;
+  color: #294b3e;
+  font-size: 12px;
+  cursor: pointer;
+}
+.demo-chapters button[aria-pressed="true"] {
+  background: #294b3e;
+  color: white;
+}
+.household-voice-region {
+  grid-row: 1 !important;
+  grid-column: 1/-1;
+}
+.household-decision,
+.household-work {
+  grid-row: 2 !important;
+}
+.household-conversation {
+  padding-top: 0;
+}
+.household-grid {
+  align-items: start;
+}
+.typed-heading {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5d6c60;
+  margin: 16px 0;
+}
+.workspace-product-link {
+  color: inherit;
+  font-size: 12px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.privacy-copy {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 760px;
+}
+.privacy-copy h3 {
+  color: #244e3b;
+}
+.workspace-privacy {
+  padding: 20px 0;
+  font-size: 12px;
+  color: #5d6a60;
+}
+.workspace-privacy button {
+  background: none;
+  border: 0;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@keyframes voice-breathe {
+  50% {
+    box-shadow: 0 0 0 12px #e6eee3;
+  }
+}
+@media (max-width: 700px) {
+  .live-voice {
+    padding: 18px;
+  }
+  .live-intro {
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+  .voice-orb {
+    width: 44px;
+    height: 44px;
+  }
+  .live-intro > div:nth-child(2) {
+    flex: 1;
+  }
+  .live-intro h2 {
+    font-size: 21px;
+  }
+  .live-intro button {
+    width: 100%;
+    margin-top: 7px;
+  }
+  .live-disclosure {
+    display: block;
+  }
+  .live-disclosure svg {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .live-captions {
+    grid-template-columns: 1fr;
+  }
+  .household-decision {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+  .household-work {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+  .demo-chapters {
+    gap: 7px;
+  }
+  .demo-chapters button {
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-live .voice-orb {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .household-voice-region {
+    order: -3 !important;
+  }
+  .household-decision {
+    order: -2 !important;
+  }
+  .household-work {
+    order: 0 !important;
+  }
+}
+.workspace-brand {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ink);
+  font: inherit;
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+  cursor: pointer;
+}
+.workspace-brand:focus-visible {
+  outline: 2px solid #8c713b;
+  outline-offset: 5px;
+}
+@media (max-width: 700px) {
+  .workspace-brand {
+    font-size: 18px;
+  }
+  .household-mode .top-actions {
+    min-width: 0;
+  }
+  .household-mode .top-actions .quiet-button {
+    min-width: 0;
+  }
+}

@@ -35,6 +35,7 @@ export function openDatabase(file) {
     CREATE TABLE IF NOT EXISTS invitations(token_hash TEXT PRIMARY KEY,household_id TEXT NOT NULL REFERENCES households(id) ON DELETE CASCADE,created_by TEXT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,expires_at INTEGER NOT NULL,used_at INTEGER);
     CREATE INDEX IF NOT EXISTS missions_household ON missions(household_id,updated_at);
     CREATE INDEX IF NOT EXISTS sessions_account ON sessions(account_id);
+    CREATE TABLE IF NOT EXISTS usage_counters(key TEXT PRIMARY KEY,count INTEGER NOT NULL);
     PRAGMA user_version=1;`);
   const q = (sql) => db.prepare(sql),
     now = () => Date.now();
@@ -154,6 +155,21 @@ export function openDatabase(file) {
     authorizedMission,
     saveMission,
     insertMission,
+    reserveUsage(key, limit) {
+      return atomic(() => {
+        const count =
+          q("SELECT count FROM usage_counters WHERE key=?").get(key)?.count ??
+          0;
+        requireThat(
+          count < limit,
+          "The public demo allowance is used up. Please try again later; saved plans and typed task controls still work.",
+          "RATE_LIMIT",
+        );
+        q(
+          "INSERT INTO usage_counters(key,count) VALUES(?,1) ON CONFLICT(key) DO UPDATE SET count=count+1",
+        ).run(key);
+      });
+    },
     async signup(
       { username, password, displayName, householdName, names },
       guest = false,

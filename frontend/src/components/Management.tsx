@@ -325,7 +325,8 @@ export function Review({
             Chapters seed time and explicitly reported progress through the
             domain engine. They do not simulate an AI response. Type an
             unscripted request on Today to test live interpretation. Household
-            display also supports local speech with transcript review.
+            display supports Gemini Live conversation, with optional server
+            transcription when installed.
           </p>
         </div>
         {s?.isDemo ? (

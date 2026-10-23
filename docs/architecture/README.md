@@ -1,4 +1,8 @@
-# ReadyBy 0.3 architecture evidence
+# ReadyBy architecture
+
+The retained SVG/PNG below describe the 0.3 text/MCP and optional Vosk path. Version 0.4 adds the real-time audio layer shown in [Live voice architecture](../LIVE_VOICE.md), and a [public single-server deployment](../HOSTING.md). The domain planner, checker and consent boundary remain shared.
+
+# Retained 0.3 architecture evidence
 
 The SVG and matching PNG use the supplied reference's grouped components, orthogonal arrows, navy modules and record cylinder. MCP is implemented. Hosted providers are labelled separately from local speech/storage. This is a logical flow, not a packet trace.
 

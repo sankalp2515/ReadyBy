@@ -13,6 +13,7 @@ import {
 import { api } from "../api";
 
 import { Brand, Field } from "./Shared";
+import { Landing } from "./Landing";
 
 export function Auth({
   onAuth,
@@ -48,6 +49,7 @@ export function Auth({
       names: [f.displayName, f.partner].filter(Boolean),
     });
   };
+  if (mode === "welcome") return <Landing busy={busy} onDemo={()=>void onAuth("demo",{})} onSignup={()=>setMode("signup")} onLogin={()=>setMode("login")}/>;
   return (
     <main className="auth">
       <section className="auth-story">

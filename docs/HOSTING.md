@@ -1,48 +1,53 @@
 # Hosting ReadyBy
 
-## Hackathon eligibility
+The public judge beta is available at **https://34-10-147-168.sslip.io/**. The dedicated Google Cloud project is `readyby-2026-1023`. No CaseProof or IntentSeal resources were stopped or reconfigured.
 
-AWS hosting is not a requirement of the Alexa+ primary track. The [official rules](https://amazonappdev2026.devpost.com/rules) specify a working Agent Skill/MCP server or the allowed simulated experience. AWS Builder is a separate optional mini-challenge requiring documented qualifying use.
+## Current deployment
 
-The [official FAQ](https://amazonappdev2026.devpost.com/details/faqs) says locally runnable public source plus the video is enough and the MCP server need not remain online after submission. Hosting on Google Cloud is therefore compatible with the stated primary-track requirements; it does not by itself qualify for AWS Builder.
+| Layer | Running configuration |
+| --- | --- |
+| Compute | Single on-demand `e2-small`, `readyby-web`, `us-central1-a` |
+| Storage | 20 GiB persistent standard disk; SQLite under `/var/lib/readyby/readyby.sqlite` |
+| Public ingress | HTTPS through Caddy; HTTP redirects to HTTPS; automatic certificate renewal |
+| Application | Node 22.23.4, supervised `readyby.service`, non-root user, loopback port 4173 |
+| Origin/authentication | Exact HTTPS origin and Host checks, secure session cookie, CSRF on writes, household scoping |
+| MCP | Authenticated same-origin `/mcp`, real SDK Streamable HTTP, protocol 2025-11-25 |
+| Text inference | Previously authorized Groq credential, Gemini fallback; actual provider/attempts recorded |
+| Live speech | Authorized existing Gemini credential, server-minted one-use browser token |
+| Backups | `readyby-backup.timer`, daily around 03:15 UTC; verified SQLite snapshots in `/var/backups/readyby` |
+| Administration | SSH only through Google IAP's source range; no instance service account or broad cloud API scopes |
 
-## What a hosted judge experience would be
+The IP-backed `sslip.io` hostname avoids needing a purchased domain. DNS and public certificate authorities remain external infrastructure dependencies. This deployment preserves the existing single-server transactional design; it is a judge beta, not a tested high-availability or high-traffic service.
 
-```text
-Judge's browser over HTTPS
-          |
-          v
-ReadyBy frontend + Node application
-          |-- authenticated /mcp (real SDK initialize/list/call)
-          |-- configured Groq/Gemini interpretation
-          |-- deterministic planner + independent checker
-          `-- durable household/account/session storage
+## Spend and credentials
+
+Planning allowance: **US$25/month**, with a **US$40 pre-tax reserve** for the expected review period. An independent **INR 2,000 monthly Google Cloud alert budget** filters only this ReadyBy project, with 50/80/100 percent notifications. Budget alerts do **not** stop this VM or create a dollar cap. Disk, IPv4, network transfer, provider usage, taxes and any prolonged hosting affect the total.
+
+The VM and IPv4/disk baseline was estimated around US$17/month before usage/tax. Google bills the account in INR; actual conversion and invoice costs apply. The temporary existing Gemini key bills its original provider project, so those inference charges are **not included in the new project's alert filter**. ReadyBy's application-level monthly allowances limit voice/text requests; they are not a general account-wide spending limit.
+
+A restricted Gemini key created for the new project could mint credentials but returned HTTP 402 for inference because AI Studio prepayment was required. The owner authorized using the existing key temporarily. To isolate provider billing later: fund Gemini in the ReadyBy project, create/use a ReadyBy-only key, install it in `/etc/readyby/environment`, verify text and audio requests, then restart ReadyBy. Never paste keys in a browser URL, commit them, or print the environment file in logs.
+
+## Operations
+
+All cloud commands must use the explicit ReadyBy project; changing the CLI's default project is unnecessary.
+
+```powershell
+gcloud compute ssh readyby-web --project=readyby-2026-1023 --zone=us-central1-a --tunnel-through-iap --command="sudo systemctl is-active readyby caddy readyby-backup.timer"
 ```
 
-Deploying the full application lets a judge open a private demo and use the MCP-backed experience in their browser. The MCP endpoint should remain authenticated. An arbitrary external MCP client does not become compatible just by learning the endpoint URL; it needs a supported authentication flow. The current independent CLI is loopback-only. Native Alexa registration remains separately gated and is not unlocked by hosting.
+- Private server environment: `/etc/readyby/environment`, readable by root and the ReadyBy service group only.
+- Built source/dependencies: `/opt/readyby`. Build the frontend before deploying; copy source/builds separately from secrets and household databases.
+- For a planned update, run the backup service first, install the verified release, then restart only `readyby.service`. In-flight prepared calls/confirmations are intentionally lost and require fresh review.
+- Check `/healthz`, a fresh guest's authenticated MCP flow, the configured inference providers, and an existing approved mission after restart.
+- Backup snapshots include account/session material and household data. Keep them private. The verified daily backup is on the same persistent disk: it protects against some application mistakes, **not loss of that disk or region**. Off-disk encrypted backups, retention automation, disaster recovery, monitoring and load testing remain launch work.
+- The optional Vosk recorded-transcript worker is not installed on this small hosted VM. Its controls are hidden when unavailable; live speech uses Gemini directly.
 
-## Current release and required changes
+## Why this is a VM
 
-Version 0.3.0 is a verified local release. It has not been remotely deployed. Before deployment:
+Cloud Run's [container contract](https://docs.cloud.google.com/run/docs/container-contract) requires listening on `0.0.0.0` and the injected port. Its default writable filesystem is memory-backed and ephemeral. It must not hold ReadyBy's only household database. A Cloud Run move needs a durable storage adaptation plus a design for prepared calls/confirmation state across replicas. Cloud SQL is not a drop-in replacement for the current SQLite adapter.
 
-1. Configure a deliberate server bind address. `app-server.mjs` currently listens only on `127.0.0.1`; container ingress must be reachable from its reverse proxy.
-2. Build and serve the React frontend and Node backend together. Static hosting alone cannot run the MCP tools or database.
-3. Set the real HTTPS `READYBY_ORIGIN`, production secure cookies, and verify origin/host/CSRF behavior through the chosen proxy.
-4. Store inference credentials server-side using the provider's secret mechanism. Supply a verified provider with quota; never include `.env` in an image or frontend bundle.
-5. Provide durable transactional storage and backups. Test restart/redeploy behavior for accounts, sessions, missions and consent state.
-6. Test two independent browsers/households, live AI, stale revisions, review/cancel/confirm, persistence and server failure. Check the actual public UI and MCP trace.
-7. If speech is included, install its Python/Vosk worker and model in the deployment and rehearse microphone access over HTTPS. A remote speech worker receives microphone audio on that server; update privacy language accordingly. The present “local speech” label describes the local deployment.
+The single VM keeps durable SQLite and the reviewed consent design intact at the accepted demonstration budget. Autoscaling and multi-region availability are not claimed.
 
-These steps are deployment work, not features claimed in this release.
+## Hackathon scope
 
-## Google Cloud options
-
-**A single Compute Engine VM with a persistent disk** is a candidate that preserves the existing single-server SQLite architecture. It still needs process supervision, HTTPS, secret management, backups and verification. No VM has been provisioned and no cost estimate is promised.
-
-**Cloud Run** can serve a Node/MCP application, but it requires a storage design change for durable ReadyBy household state. Google's [container contract](https://docs.cloud.google.com/run/docs/container-contract) requires listening on `0.0.0.0` and the injected `PORT`; its default writable filesystem is memory-backed and disappears when the instance stops. Limiting instance count does not make that storage durable. A managed database migration is additional implementation; Cloud SQL is not a drop-in replacement for Node's SQLite adapter.
-
-Do not put the SQLite database in an ordinary Cloud Run filesystem and call the product persistent. Review SQLite locking/WAL requirements before proposing any network-filesystem workaround. Prepared-call and confirmation caches are currently in process, so restarts or multiple replicas can require a fresh review; a scaled deployment needs a suitable shared design or an explicitly verified single-server model.
-
-## Recommendation
-
-The local demo/source path is already verified. If adding a hosted demo next, choose a deliberately scoped single-server deployment that preserves durable state, or budget for a proper shared database/authentication adaptation. Publish a live URL only after testing it. AWS, Google Cloud and other hosts are choices; a hosting logo does not substitute for customer value or technical evidence.
+The [official rules](https://amazonappdev2026.devpost.com/rules) and [FAQ](https://amazonappdev2026.devpost.com/details/faqs) allow the Alexa+ web simulation path; AWS hosting is not required for this primary track. Hosting does not unlock native Alexa registration or qualify the project for the separate AWS Builder mini-challenge. Judges can use the authenticated MCP-backed web experience without setting up accounts or installing an MCP client; generic third-party MCP client login/OAuth is not implemented.

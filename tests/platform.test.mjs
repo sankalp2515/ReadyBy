@@ -93,6 +93,33 @@ const write = (s, a) => ({
   idempotencyKey: randomUUID(),
 });
 
+test("public computed preview is available without identity; live credentials require household, CSRF and rate limits", async (t) => {
+  let issued = 0;
+  const h = await harness(t, {
+    liveService: {
+      health: () => ({ available: true }),
+      start: async () => {
+        issued++;
+        return { token: "ephemeral-test-only" };
+      },
+    },
+  });
+  const c = h.client();
+  const preview = await c.call("demo/preview");
+  assert.equal(preview.status, 200);
+  assert.equal(preview.data.fictional, true);
+  assert.equal((await c.call("live/session", {})).status, 401);
+  await c.call("auth/demo", {});
+  assert.equal(
+    (await c.call("live/session", {}, { "X-CSRF-Token": "wrong" })).status,
+    403,
+  );
+  for (let n = 0; n < 3; n++)
+    assert.equal((await c.call("live/session", {})).status, 200);
+  assert.equal((await c.call("live/session", {})).status, 429);
+  assert.equal(issued, 3);
+});
+
 test("clarification survives a read, resolves explicitly once, and cannot approve or bypass state checks", async (t) => {
   let interpretations = 0;
   const h = await harness(t, {
@@ -381,7 +408,11 @@ test("routine, demo chapters, model receipts and command retries use real reduce
   const retry = await a.call("command", payload);
   assert.equal(retry.data.duplicate, true);
   assert.equal(h.calls, 1);
-  const approval = await a.call("proposals/confirm", {missionId:s.id,expectedRevision:s.revision,proposalId:s.proposal.options.find(o=>o.kind==='defer').id});
+  const approval = await a.call("proposals/confirm", {
+    missionId: s.id,
+    expectedRevision: s.revision,
+    proposalId: s.proposal.options.find((o) => o.kind === "defer").id,
+  });
   s = (
     await a.call(
       "action",
@@ -572,5 +603,46 @@ test("concurrent changes cannot partially commit an interpreted request", async 
   assert.equal(
     current.tasks.find((t) => t.id === "laundry").release,
     s.start + 12,
+  );
+});
+
+test("a short yes opens exact proposal review without inference or a commitment change", async (t) => {
+  let modelCalls = 0;
+  const h = await harness(t, {
+    interpreter: async () => {
+      modelCalls++;
+      throw new Error("Model should not navigate an explicit review");
+    },
+  });
+  const c = h.client();
+  await c.call("auth/demo", {});
+  let state = (await c.call("state")).data.state;
+  state = (await c.call("demo/scenario", write(state, { scenario: "delay" })))
+    .data.state;
+  state = (
+    await c.call(
+      "action",
+      write(state, {
+        type: "delay",
+        taskId: "laundry",
+        kind: "release",
+        minutes: 15,
+      }),
+    )
+  ).data.state;
+  const result = await c.call("command", write(state, { text: "yes" }));
+  assert.equal(result.status, 200);
+  assert.equal(modelCalls, 0);
+  assert.equal(
+    result.data.reviewProposalId,
+    state.proposal.options.find((o) => o.kind === "defer").id,
+  );
+  assert.equal(
+    result.data.state.tasks.find((t) => t.id === "laundry").status,
+    "pending",
+  );
+  assert.equal(
+    result.data.state.receipts.at(-1).kind,
+    "bounded-review-navigation",
   );
 });

@@ -14,6 +14,7 @@ import type { Mission } from "../types";
 import { fmt, type Dialog } from "../model";
 import { Timeline } from "./Workspace";
 import { VoiceComposer } from "./VoiceComposer";
+import type { VoiceResult } from "./LiveVoice";
 
 export function HouseholdDisplay({
   mission: s,
@@ -23,6 +24,8 @@ export function HouseholdDisplay({
   open,
   setup,
   runtime,
+  voiceCommand,
+  scenario,
 }: {
   mission: Mission;
   busy: boolean;
@@ -31,6 +34,8 @@ export function HouseholdDisplay({
   open: (dialog: Dialog) => void;
   setup: () => void;
   runtime: { available: boolean; hosted?: boolean } | null;
+  voiceCommand: (text: string) => Promise<VoiceResult>;
+  scenario: (chapter: string) => void;
 }) {
   const [tab, setTab] = useState("Tasks");
   const completed = s.tasks.filter((t) => t.status === "completed");
@@ -68,7 +73,7 @@ export function HouseholdDisplay({
         <span>Alexa+ experience simulation</span>
         <span>
           {runtime?.hosted
-            ? "Cloud AI · Local speech"
+            ? "Cloud AI · Voice available on demand"
             : "Local AI · No device connection"}
         </span>
       </div>
@@ -109,6 +114,26 @@ export function HouseholdDisplay({
           requests run live.
         </p>
       )}
+      {s.isDemo && (
+        <nav className="demo-chapters" aria-label="Guided demo chapters">
+          <span>Try a chapter</span>
+          {[
+            ["opening", "1 · Ordinary morning"],
+            ["delay", "2 · Washer delay"],
+            ["essential", "3 · Essential stays protected"],
+          ].map(([id, label]) => (
+            <button
+              key={id}
+              disabled={busy}
+              aria-pressed={s.demoChapter === id}
+              onClick={() => scenario(id)}
+            >
+              {label}
+            </button>
+          ))}
+          <span>Fictional starting state · live requests</span>
+        </nav>
+      )}
       <nav className="household-tabs" aria-label="Mission views">
         {["Tasks", "Schedule", "History"].map((name) => (
           <button
@@ -123,6 +148,16 @@ export function HouseholdDisplay({
         <a href="#readyby-conversation">Talk to ReadyBy</a>
       </nav>
       <div className="household-grid">
+        <div className="household-voice-region" id="readyby-conversation">
+          <VoiceComposer
+            key={s.id}
+            busy={busy}
+            available={runtime?.available ?? null}
+            reply={reply}
+            onCommand={command}
+            onVoiceCommand={voiceCommand}
+          />
+        </div>
         <aside
           className={
             "household-decision " + (recommended ? "needs-decision" : "")
@@ -307,15 +342,6 @@ export function HouseholdDisplay({
             </span>
           </div>
         </aside>
-        <div className="household-voice-region" id="readyby-conversation">
-          <VoiceComposer
-            key={s.id}
-            busy={busy}
-            available={runtime?.available ?? null}
-            reply={reply}
-            onCommand={command}
-          />
-        </div>
         <section
           className="household-work"
           aria-label={tab === "Tasks" ? "Household task list" : tab}

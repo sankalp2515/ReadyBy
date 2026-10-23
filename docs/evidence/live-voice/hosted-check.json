@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-23T14:40:15.843Z",
+  "url": "https://34-10-147-168.sslip.io",
+  "protocol": "2025-11-25",
+  "toolCount": 13,
+  "live": {
+    "syntheticInput": true,
+    "heard": "The washer has another 15 minutes left.",
+    "spoken": "The washer is ready at 08:21. Laundry needs 5 minutes, then the final check needs 2. All retained work finishes at 08:28, 8 minutes after departure. Defer laundry and finish at 08:16? Estimates depend on your reports. Please review the revision on screen and press Approve.",
+    "audioChunks": 52,
+    "toolCalls": 1,
+    "fullFinish": 508,
+    "proposedFinish": 496,
+    "verified": true,
+    "provider": "Groq",
+    "model": "openai/gpt-oss-120b"
+  },
+  "scriptedConfirmationNotHumanProof": true,
+  "approvedFinish": 496,
+  "trace": [
+    {
+      "method": "initialize",
+      "status": 200,
+      "latencyMs": 342
+    },
+    {
+      "method": "notifications/initialized",
+      "status": 202,
+      "latencyMs": 783
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "latencyMs": 795
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 591
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_interpret_request",
+      "status": 200,
+      "latencyMs": 1339
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_report_delay",
+      "status": 200,
+      "latencyMs": 283
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_interpret_request",
+      "status": 200,
+      "latencyMs": 877
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_get_mission",
+      "status": 200,
+      "latencyMs": 267
+    },
+    {
+      "method": "tools/call",
+      "tool": "readyby_commit_proposal",
+      "status": 200,
+      "latencyMs": 880
+    }
+  ]
+}

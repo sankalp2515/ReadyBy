@@ -37,6 +37,8 @@ import { Workspace } from "./components/Workspace";
 import { Household, Review } from "./components/Management";
 import { MissionDialog } from "./components/MissionDialog";
 import { HouseholdDisplay } from "./components/HouseholdDisplay";
+import { Landing, PrivacyContent } from "./components/Landing";
+import type { VoiceResult } from "./components/LiveVoice";
 const icons = {
   Today: Home,
   Routines: RotateCcw,
@@ -54,6 +56,8 @@ export default function App() {
     [menu, setMenu] = useState(false),
     [recovery, setRecovery] = useState("");
   const [householdView, setHouseholdView] = useState(true);
+  const [productHome, setProductHome] = useState(false),
+    [privacy, setPrivacy] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [route, boot?.identity?.username]);
@@ -150,6 +154,7 @@ export default function App() {
       if (option) setDialog({ kind: "approve", option });
     }
     await refresh();
+    return r;
   }
   async function auth(path: string, body: unknown) {
     const b = await api<Bootstrap>("auth/" + path, body);
@@ -162,6 +167,32 @@ export default function App() {
     setRoute(r);
     setMenu(false);
   };
+  async function voiceCommand(text: string): Promise<VoiceResult> {
+    let reply = "";
+    const ok = await run(async () => {
+      const r = await command(text);
+      reply = r?.reply ?? "No mission is open. Please open a mission.";
+    });
+    return {
+      ok,
+      reply: ok
+        ? reply
+        : "That request could not be verified. Your current plan is displayed; please retry or type below.",
+    };
+  }
+  function scenario(chapter: string) {
+    void run(async () => {
+      if (!mission) return;
+      const r = await api("demo/scenario", {
+        scenario: chapter,
+        missionId: mission.id,
+        expectedRevision: mission.revision,
+        idempotencyKey: requestKey(),
+      });
+      setMission(r.state);
+      await refresh();
+    });
+  }
   if (!boot)
     return (
       <div className="boot">
@@ -193,6 +224,19 @@ export default function App() {
           </div>
         )}
       </>
+    );
+  if (productHome)
+    return (
+      <Landing
+        returning
+        busy={busy}
+        onDemo={() => {
+          setProductHome(false);
+          nav("Today");
+        }}
+        onSignup={() => setProductHome(false)}
+        onLogin={() => setProductHome(false)}
+      />
     );
   return (
     <div
@@ -273,15 +317,22 @@ export default function App() {
             >
               <Menu />
             </button>
-            <span>
+            <button
+              className="workspace-brand"
+              aria-label="ReadyBy product home"
+              onClick={() => setProductHome(true)}
+            >
               {householdView && route === "Today" && mission
                 ? "ReadyBy"
                 : "Workspace"}
-            </span>
+            </button>
             <ChevronRight size={14} />
             <strong>{route === "Review" ? "System review" : route}</strong>
           </div>
           <div className="top-actions">
+            <button className="quiet-button" onClick={() => setPrivacy(true)}>
+              Privacy & help
+            </button>
             {mission && (
               <button
                 className="quiet-button view-switch"
@@ -364,7 +415,13 @@ export default function App() {
                     mission={mission}
                     busy={busy}
                     action={(a) => run(() => action(a))}
-                    command={(text) => run(() => command(text))}
+                    command={(text) =>
+                      run(async () => {
+                        await command(text);
+                      })
+                    }
+                    voiceCommand={voiceCommand}
+                    scenario={scenario}
                     open={setDialog}
                     setup={() => setHouseholdView(false)}
                     runtime={runtime}
@@ -374,7 +431,11 @@ export default function App() {
                     mission={mission}
                     busy={busy}
                     action={(a) => run(() => action(a))}
-                    command={(text) => run(() => command(text))}
+                    command={(text) =>
+                      run(async () => {
+                        await command(text);
+                      })
+                    }
                     open={setDialog}
                     runtime={runtime}
                   />
@@ -736,6 +797,17 @@ export default function App() {
             <button className="primary full" onClick={() => setRecovery("")}>
               I saved my recovery code <Check size={16} />
             </button>
+          </div>
+        </Modal>
+      )}
+      {privacy && (
+        <Modal
+          title="Privacy, scope & help"
+          close={() => setPrivacy(false)}
+          busy={false}
+        >
+          <div className="modal-body privacy-copy">
+            <PrivacyContent />
           </div>
         </Modal>
       )}

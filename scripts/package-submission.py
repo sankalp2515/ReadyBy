@@ -18,7 +18,7 @@ FILES = [
 TREES = [
     'src', 'tests', 'scripts', 'public', 'readyby/public',
     'frontend/src', 'frontend/public', 'frontend/dist', 'docs/architecture',
-    '.github', 'docs/brand', 'docs/releases',
+    '.github', 'docs/brand', 'docs/releases', 'docs/evidence/live-voice',
 ]
 EVIDENCE = [
     'actual-browser-receipts.json', 'speech-service.json', 'tests.tap',
@@ -61,7 +61,7 @@ def main():
     inputs = list(selected_files())
     manifest = {
         'createdAt': datetime.now(timezone.utc).isoformat(),
-        'scope': 'ReadyBy 0.3.0 Alexa+ simulator source and selected evidence; public repository: https://github.com/sankalp2515/ReadyBy',
+        'scope': 'ReadyBy 0.4.0 Alexa+ simulator source and selected evidence; public repository: https://github.com/sankalp2515/ReadyBy',
         'excludes': ['live household data and account/session records', 'backups', 'environment secrets', 'installed dependencies', 'model weights', 'historical videos'],
         'files': [{
             'path': relative.as_posix(), 'bytes': path.stat().st_size,

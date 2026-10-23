@@ -8,25 +8,8 @@ import {
   VolumeX,
 } from "lucide-react";
 import { api } from "../api";
-
-function encodePcm(samples: Float32Array, rate: number) {
-  const ratio = rate / 16000;
-  const count = Math.floor(samples.length / ratio);
-  const bytes = new Uint8Array(count * 2);
-  const view = new DataView(bytes.buffer);
-  for (let i = 0; i < count; i++) {
-    const start = Math.floor(i * ratio),
-      end = Math.min(samples.length, Math.floor((i + 1) * ratio));
-    let sum = 0;
-    for (let j = start; j < end; j++) sum += samples[j];
-    const value = Math.max(-1, Math.min(1, sum / Math.max(1, end - start)));
-    view.setInt16(i * 2, Math.round(value * (value < 0 ? 32768 : 32767)), true);
-  }
-  let binary = "";
-  for (let i = 0; i < bytes.length; i += 16000)
-    binary += String.fromCharCode(...bytes.subarray(i, i + 16000));
-  return btoa(binary);
-}
+import { encodePcm } from "../pcm";
+import { LiveVoice, type VoiceResult } from "./LiveVoice";
 
 type Capture = {
   stream: MediaStream;
@@ -40,11 +23,13 @@ export function VoiceComposer({
   available,
   reply,
   onCommand,
+  onVoiceCommand,
 }: {
   busy: boolean;
   available: boolean | null;
   reply: string;
   onCommand: (text: string) => Promise<boolean>;
+  onVoiceCommand?: (text: string) => Promise<VoiceResult>;
 }) {
   const [text, setText] = useState(""),
     [error, setError] = useState("");
@@ -55,6 +40,10 @@ export function VoiceComposer({
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]),
     [enabled, setEnabled] = useState(false);
   const [seconds, setSeconds] = useState(0);
+  const [liveActive, setLiveActive] = useState(false);
+  useEffect(() => {
+    if (liveActive) window.speechSynthesis?.cancel();
+  }, [liveActive]);
   const capture = useRef<Capture | null>(null),
     timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const token = useRef(0),
@@ -111,8 +100,8 @@ export function VoiceComposer({
   useEffect(() => {
     if (busy || lastReply.current === reply) return;
     lastReply.current = reply;
-    if (enabled && localVoice && !busy) speak(reply);
-  }, [reply, enabled, localVoice, busy]);
+    if (enabled && localVoice && !busy && !liveActive) speak(reply);
+  }, [reply, enabled, localVoice, busy, liveActive]);
 
   async function recognize(
     samples: Float32Array,
@@ -257,6 +246,10 @@ export function VoiceComposer({
       className="household-conversation"
       aria-label="Conversation with ReadyBy"
     >
+      {onVoiceCommand && (
+        <LiveVoice onCommand={onVoiceCommand} onActivity={setLiveActive} />
+      )}
+      <p className="typed-heading">Or type a request · same MCP tools</p>
       <div className="conversation-heading">
         <div>
           <h2>Talk it through.</h2>
@@ -264,7 +257,7 @@ export function VoiceComposer({
         </div>
         <button
           className="speech-toggle"
-          disabled={!localVoice}
+          disabled={!localVoice || liveActive}
           aria-pressed={enabled}
           onClick={() => {
             if (enabled) window.speechSynthesis?.cancel();
@@ -316,41 +309,47 @@ export function VoiceComposer({
           placeholder="Try: The washer has another 15 minutes left."
         />
         <div className="voice-actions">
-          <button
-            type="button"
-            className={
-              "secondary record-button " +
-              (phase === "recording" ? "recording" : "")
-            }
-            disabled={
-              busy || !speech || ["starting", "transcribing"].includes(phase)
-            }
-            onClick={() => void record()}
-          >
-            {phase === "recording" ? (
-              <Square size={16} />
-            ) : phase === "starting" || phase === "transcribing" ? (
-              <LoaderCircle className="spin" size={17} />
-            ) : (
-              <Mic size={17} />
-            )}
-            {phase === "recording"
-              ? `Stop recording · ${seconds}s`
-              : phase === "transcribing"
-                ? "Transcribing locally…"
-                : phase === "starting"
-                  ? "Opening microphone…"
-                  : "Record request"}
-          </button>
-          <span className="speech-status">
-            {phase === "recording"
-              ? "Listening · stops at 20 seconds"
-              : speech === null
-                ? "Checking local speech…"
-                : speech
-                  ? "Local speech · review the transcript before sending"
-                  : "Speech setup needed · typing is available"}
-          </span>
+          {speech && (
+            <>
+              <button
+                type="button"
+                className={
+                  "secondary record-button " +
+                  (phase === "recording" ? "recording" : "")
+                }
+                disabled={
+                  busy ||
+                  !speech ||
+                  ["starting", "transcribing"].includes(phase)
+                }
+                onClick={() => void record()}
+              >
+                {phase === "recording" ? (
+                  <Square size={16} />
+                ) : phase === "starting" || phase === "transcribing" ? (
+                  <LoaderCircle className="spin" size={17} />
+                ) : (
+                  <Mic size={17} />
+                )}
+                {phase === "recording"
+                  ? `Stop recording · ${seconds}s`
+                  : phase === "transcribing"
+                    ? "Transcribing on the server…"
+                    : phase === "starting"
+                      ? "Opening microphone…"
+                      : "Record request"}
+              </button>
+              <span className="speech-status">
+                {phase === "recording"
+                  ? "Listening · stops at 20 seconds"
+                  : speech === null
+                    ? "Checking server transcription…"
+                    : speech
+                      ? "Server transcription · review the transcript before sending"
+                      : "Speech setup needed · typing is available"}
+              </span>
+            </>
+          )}
           <button
             className="primary"
             disabled={busy || phase !== "idle" || !available || !text.trim()}
@@ -359,26 +358,28 @@ export function VoiceComposer({
           </button>
         </div>
       </form>
-      <details className="recorded-clip">
-        <summary>Use a recorded speech clip</summary>
-        <p>
-          Recognize up to 20 seconds locally. Review the transcript before
-          sending.
-        </p>
-        <label className="field">
-          <span>Speech audio file</span>
-          <input
-            type="file"
-            accept="audio/*"
-            disabled={busy || phase !== "idle" || !speech}
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) void useClip(file);
-              e.target.value = "";
-            }}
-          />
-        </label>
-      </details>
+      {speech && (
+        <details className="recorded-clip">
+          <summary>Use a recorded speech clip</summary>
+          <p>
+            Recognize up to 20 seconds on this ReadyBy server. Review the
+            transcript before sending.
+          </p>
+          <label className="field">
+            <span>Speech audio file</span>
+            <input
+              type="file"
+              accept="audio/*"
+              disabled={busy || phase !== "idle" || !speech}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) void useClip(file);
+                e.target.value = "";
+              }}
+            />
+          </label>
+        </details>
+      )}
       {error && (
         <p className="voice-error" role="alert">
           {error}

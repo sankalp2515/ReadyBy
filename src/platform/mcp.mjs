@@ -127,7 +127,7 @@ export async function handleMcp(req, res, body, { identity, service }) {
     return;
   }
   const server = new McpServer(
-    { name: "readyby-household-recovery", version: "0.3.0" },
+    { name: "readyby-household-recovery", version: "0.4.0" },
     {
       instructions:
         "Household deadline recovery. All tools are scoped to the authenticated household. Inspect state, use explicit progress reports and review consequential proposals. Native Alexa connectivity is not configured.",

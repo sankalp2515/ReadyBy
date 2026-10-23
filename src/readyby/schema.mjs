@@ -1,4 +1,4 @@
-export class DomainError extends Error { constructor(message,code='INVALID_ACTION'){super(message);this.code=code;} }
+export class DomainError extends Error { constructor(message,code='INVALID_ACTION'){super(message);this.name='DomainError';this.code=code;} }
 export const requireThat=(condition,message,code)=>{if(!condition)throw new DomainError(message,code);};
 export function validateMission(s){
   requireThat(s?.schemaVersion===1,'Unsupported ReadyBy state.');

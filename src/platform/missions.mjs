@@ -91,10 +91,36 @@ export function createMissionService({
     );
     inFlight.add(identity.accountId);
     try {
-      const ai =
+      const review =
+        !s.pendingClarification &&
+        s.proposal?.options.length &&
+        /^(?:yes(?: please)?|i approve|approve(?: this(?: revision)?)?)[.!]?$/i.test(
+          body.text.trim(),
+        )
+          ? {
+              intent: {
+                action: "approve",
+                optionKind:
+                  s.proposal.options.find((o) => o.kind === "defer")?.kind ??
+                  s.proposal.options[0].kind,
+              },
+              receipt: {
+                id: randomUUID(),
+                kind: "bounded-review-navigation",
+                latencyMs: 0,
+              },
+            }
+          : null;
+      const bounded =
         resolveClarification(s, body.text) ??
         clarifyUnscopedDuration(body.text) ??
-        (await interpreter(s, body.text));
+        review;
+      if (!bounded && process.env.NODE_ENV === "production")
+        data.reserveUsage(
+          "text:month:" + new Date().toISOString().slice(0, 7),
+          2000,
+        );
+      const ai = bounded ?? (await interpreter(s, body.text));
       if (ai.intent.action === "approve") {
         ai.reviewProposalId = s.proposal?.options.find(
           (o) => o.kind === (ai.intent.optionKind || "defer"),

@@ -107,6 +107,39 @@ test("provider failures never expose provider response bodies or credentials", a
   );
 });
 
+test("an incomplete provider response can fall back without exposing raw transport details", async (t) => {
+  environment(t, {
+    READYBY_AI_PROVIDER: "nvidia",
+    READYBY_AI_FALLBACKS: "gemini",
+    NVIDIA_API_KEY: "test-nvidia",
+    GEMINI_API_KEY: "test-gemini",
+  });
+  const r = await requestIntent(
+    messages,
+    {},
+    {
+      fetcher: async (url) =>
+        url.includes("nvidia.com")
+          ? {
+              ok: true,
+              json: async () => {
+                throw new Error("private transport details");
+              },
+            }
+          : new Response(
+              JSON.stringify({
+                candidates: [
+                  { content: { parts: [{ text: '{"action":"status"}' }] } },
+                ],
+              }),
+            ),
+    },
+  );
+  assert.equal(r.provider, "Google Gemini");
+  assert.equal(r.attempts[0].reason, "timeout or unavailable");
+  assert.equal(JSON.stringify(r).includes("private transport"), false);
+});
+
 test("quota failure falls back explicitly and subsequent requests respect provider cooldown", async (t) => {
   environment(t, {
     READYBY_AI_PROVIDER: "groq",

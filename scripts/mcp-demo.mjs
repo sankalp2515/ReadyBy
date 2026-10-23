@@ -39,7 +39,7 @@ async function http(path, body) {
 await http("/api/auth/demo", {});
 const client = new Client({
   name: "readyby-independent-cli",
-  version: "0.3.0",
+  version: "0.4.0",
 });
 let negotiated = "";
 const transport = new StreamableHTTPClientTransport(new URL(base + "/mcp"), {

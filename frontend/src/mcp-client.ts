@@ -37,7 +37,7 @@ async function connect() {
       );
       const client = new Client({
         name: "readyby-household-web",
-        version: "0.3.0",
+        version: "0.4.0",
       });
       const transport = new StreamableHTTPClientTransport(
         new URL("/mcp", location.origin),

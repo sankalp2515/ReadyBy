@@ -172,7 +172,15 @@ async function singleRequest(
     );
     throw error;
   }
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    throw new DomainError(
+      `${c.label} returned an incomplete response. Your mission is unchanged. Retry or use task controls.`,
+      "AI_UNAVAILABLE",
+    );
+  }
   const content =
     c.provider === "ollama"
       ? data.message?.content

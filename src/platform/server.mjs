@@ -12,6 +12,8 @@ import { viewState } from "../readyby/reducer.mjs";
 import { interpret, agentHealth } from "../readyby/agent.mjs";
 import { DomainError, requireThat } from "../readyby/schema.mjs";
 import { createSpeechService } from "./speech.mjs";
+import { publicPreview } from "./preview.mjs";
+import { createLiveService } from "./live.mjs";
 const types = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript",
@@ -30,6 +32,7 @@ export async function createPlatformServer({
   origin = process.env.READYBY_ORIGIN || null,
   production = process.env.NODE_ENV === "production",
   missionNow = Date.now,
+  liveService = createLiveService(),
 } = {}) {
   requireThat(
     !production || origin?.startsWith("https://"),
@@ -56,7 +59,7 @@ export async function createPlatformServer({
     );
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
+      "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
     );
     const json = (code, result) => {
       res.writeHead(code, {
@@ -94,7 +97,7 @@ export async function createPlatformServer({
       path = url.pathname;
       if (path === "/healthz") {
         data.db.prepare("SELECT 1 AS ready").get();
-        json(200, { ok: true, version: "0.3.0", database: "ready" });
+        json(200, { ok: true, version: "0.4.0", database: "ready" });
         return;
       }
       if (path === "/mcp") {
@@ -239,6 +242,11 @@ export async function createPlatformServer({
           json(200, { identity: null, templates });
           return;
         }
+        if (path === "/api/demo/preview" && req.method === "GET") {
+          limits.check("preview:" + address, { limit: 60 });
+          json(200, { samples: publicPreview(), fictional: true });
+          return;
+        }
         requireThat(
           identity,
           "Sign in to your household to continue.",
@@ -272,6 +280,33 @@ export async function createPlatformServer({
         }
         if (path === "/api/runtime" && req.method === "GET") {
           json(200, await health());
+          return;
+        }
+        if (path === "/api/live" && req.method === "GET") {
+          json(200, liveService.health());
+          return;
+        }
+        if (path === "/api/live/session" && req.method === "POST") {
+          limits.check("live:" + identity.accountId, {
+            limit: 3,
+            windowMs: 600000,
+          });
+          requireThat(
+            liveService.health().available,
+            "Live voice is unavailable. Type your request instead.",
+            "UNAVAILABLE",
+          );
+          if (production) {
+            data.reserveUsage(
+              "live:month:" + new Date().toISOString().slice(0, 7),
+              60,
+            );
+            data.reserveUsage(
+              "live:day:" + new Date().toISOString().slice(0, 10),
+              10,
+            );
+          }
+          json(200, await liveService.start());
           return;
         }
         if (path === "/api/speech" && req.method === "GET") {

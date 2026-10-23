@@ -22,7 +22,7 @@ export function createSpeechService() {
     pending = null;
   const unavailable = () =>
     new DomainError(
-      "Local speech is unavailable. Run the speech setup, or type your request.",
+      "Server transcription is unavailable. Run the speech setup, or type your request.",
       "SPEECH_UNAVAILABLE",
     );
   function start() {
@@ -120,7 +120,7 @@ export function createSpeechService() {
       await start();
       requireThat(
         !pending,
-        "Local speech is busy. Please retry.",
+        "Server transcription is busy. Please retry.",
         "RATE_LIMIT",
       );
       return new Promise((ok, fail) => {

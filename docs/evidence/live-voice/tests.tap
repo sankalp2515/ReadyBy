@@ -1,0 +1,400 @@
+TAP version 13
+# Subtest: duration answers are explicit single quantities, never inferred from assent or ambiguous speech
+ok 1 - duration answers are explicit single quantities, never inferred from assent or ambiguous speech
+  ---
+  duration_ms: 3.5445
+  type: 'test'
+  ...
+# Subtest: washer clarification is bounded to a unique pending wait task and exact state/time
+ok 2 - washer clarification is bounded to a unique pending wait task and exact state/time
+  ---
+  duration_ms: 82.2101
+  type: 'test'
+  ...
+# Subtest: appointment change creates uncovered task and filters full availability
+ok 3 - appointment change creates uncovered task and filters full availability
+  ---
+  duration_ms: 9.3893
+  type: 'test'
+  ...
+# Subtest: offer does not count as coverage; intended participant must accept
+ok 4 - offer does not count as coverage; intended participant must accept
+  ---
+  duration_ms: 7.1424
+  type: 'test'
+  ...
+# Subtest: stale revision and double acceptance are rejected
+ok 5 - stale revision and double acceptance are rejected
+  ---
+  duration_ms: 1.9972
+  type: 'test'
+  ...
+# Subtest: reschedule invalidates an outstanding offer
+ok 6 - reschedule invalidates an outstanding offer
+  ---
+  duration_ms: 2.7006
+  type: 'test'
+  ...
+# Subtest: decline does not imply coverage and excludes candidate
+ok 7 - decline does not imply coverage and excludes candidate
+  ---
+  duration_ms: 1.086
+  type: 'test'
+  ...
+# Subtest: availability conflict and unknown participant cannot be offered
+ok 8 - availability conflict and unknown participant cannot be offered
+  ---
+  duration_ms: 1.6931
+  type: 'test'
+  ...
+# Subtest: planner excludes overlapping commitments
+ok 9 - planner excludes overlapping commitments
+  ---
+  duration_ms: 0.8854
+  type: 'test'
+  ...
+# Subtest: command fallback and malformed times leave state unchanged
+ok 10 - command fallback and malformed times leave state unchanged
+  ---
+  duration_ms: 4.4485
+  type: 'test'
+  ...
+# Subtest: supported typed command calls real planner and emits activity
+ok 11 - supported typed command calls real planner and emits activity
+  ---
+  duration_ms: 2.9394
+  type: 'test'
+  ...
+# Subtest: a new time always needs fresh acceptance even if the old owner is available
+ok 12 - a new time always needs fresh acceptance even if the old owner is available
+  ---
+  duration_ms: 1.7851
+  type: 'test'
+  ...
+# Subtest: negations and questions containing action words never execute mutations
+ok 13 - negations and questions containing action words never execute mutations
+  ---
+  duration_ms: 7.6712
+  type: 'test'
+  ...
+# Subtest: typed offer supports the advertised Ask Priya command
+ok 14 - typed offer supports the advertised Ask Priya command
+  ---
+  duration_ms: 0.6059
+  type: 'test'
+  ...
+# (node:40172) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: voice credentials are single-use, time-limited and locked to the bounded tool configuration
+ok 15 - voice credentials are single-use, time-limited and locked to the bounded tool configuration
+  ---
+  duration_ms: 28.7597
+  type: 'test'
+  ...
+# Subtest: voice without a configured key fails before issuing credentials
+ok 16 - voice without a configured key fails before issuing credentials
+  ---
+  duration_ms: 1.4746
+  type: 'test'
+  ...
+# Subtest: provider failures do not expose key or upstream error details
+ok 17 - provider failures do not expose key or upstream error details
+  ---
+  duration_ms: 0.6085
+  type: 'test'
+  ...
+# Subtest: demo allowance cannot be exceeded and remains in the database
+ok 18 - demo allowance cannot be exceeded and remains in the database
+  ---
+  duration_ms: 4.2397
+  type: 'test'
+  ...
+# Subtest: public preview contains computed fictional schedule results and no household identifiers
+ok 19 - public preview contains computed fictional schedule results and no household identifiers
+  ---
+  duration_ms: 42.4219
+  type: 'test'
+  ...
+# (node:107796) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: prepared calls and review confirmations expire independently of the demo clock
+ok 20 - prepared calls and review confirmations expire independently of the demo clock
+  ---
+  duration_ms: 485.1567
+  type: 'test'
+  ...
+# Subtest: official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+ok 21 - official independent SDK negotiates 2025-11-25, discovers real tools, reads household state; auth/origin/version gates hold
+  ---
+  duration_ms: 136.1098
+  type: 'test'
+  ...
+# Subtest: typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+ok 22 - typed MCP recovery preserves progress and essential work; exact review confirmation is scoped, single-use and retry-safe
+  ---
+  duration_ms: 219.0107
+  type: 'test'
+  ...
+# Subtest: two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+ok 23 - two actual MCP calls prepare then execute a model-selected tool; tampering, stale state and cross-session replay are rejected
+  ---
+  duration_ms: 181.5507
+  type: 'test'
+  ...
+# Subtest: MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+ok 24 - MCP clarification avoids another model call; a natural-language yes cannot commit a proposal
+  ---
+  duration_ms: 107.2087
+  type: 'test'
+  ...
+# (node:99396) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: public computed preview is available without identity; live credentials require household, CSRF and rate limits
+ok 25 - public computed preview is available without identity; live credentials require household, CSRF and rate limits
+  ---
+  duration_ms: 404.6977
+  type: 'test'
+  ...
+# Subtest: clarification survives a read, resolves explicitly once, and cannot approve or bypass state checks
+ok 26 - clarification survives a read, resolves explicitly once, and cannot approve or bypass state checks
+  ---
+  duration_ms: 180.1135
+  type: 'test'
+  ...
+# Subtest: speech endpoints require household authentication and CSRF; invalid audio never mutates a mission
+ok 27 - speech endpoints require household authentication and CSRF; invalid audio never mutates a mission
+  ---
+  duration_ms: 83.2909
+  type: 'test'
+  ...
+# Subtest: household authentication, CSRF, scoped mission access and persistence
+ok 28 - household authentication, CSRF, scoped mission access and persistence
+  ---
+  duration_ms: 2385.7281
+  type: 'test'
+  ...
+# Subtest: invitation is one-use; member access is bounded and can be revoked
+ok 29 - invitation is one-use; member access is bounded and can be revoked
+  ---
+  duration_ms: 1801.3741
+  type: 'test'
+  ...
+# Subtest: recovery code rotates, invalidates sessions, and cannot be reused
+ok 30 - recovery code rotates, invalidates sessions, and cannot be reused
+  ---
+  duration_ms: 2314.2008
+  type: 'test'
+  ...
+# Subtest: routine, demo chapters, model receipts and command retries use real reducer state
+ok 31 - routine, demo chapters, model receipts and command retries use real reducer state
+  ---
+  duration_ms: 97.6814
+  type: 'test'
+  ...
+# Subtest: database survives reopen, rolls back failed writes and deletes household cascades
+ok 32 - database survives reopen, rolls back failed writes and deletes household cascades
+  ---
+  duration_ms: 882.6358
+  type: 'test'
+  ...
+# Subtest: template constraints and rate limits reject invalid input
+ok 33 - template constraints and rate limits reject invalid input
+  ---
+  duration_ms: 15.9869
+  type: 'test'
+  ...
+# Subtest: AI outage returns an actionable error without changing saved work
+ok 34 - AI outage returns an actionable error without changing saved work
+  ---
+  duration_ms: 148.6884
+  type: 'test'
+  ...
+# Subtest: single-adult AI draft defaults remain valid and production requires HTTPS configuration
+ok 35 - single-adult AI draft defaults remain valid and production requires HTTPS configuration
+  ---
+  duration_ms: 8.4147
+  type: 'test'
+  ...
+# Subtest: concurrent changes cannot partially commit an interpreted request
+ok 36 - concurrent changes cannot partially commit an interpreted request
+  ---
+  duration_ms: 191.1289
+  type: 'test'
+  ...
+# Subtest: a short yes opens exact proposal review without inference or a commitment change
+ok 37 - a short yes opens exact proposal review without inference or a commitment change
+  ---
+  duration_ms: 180.2121
+  type: 'test'
+  ...
+# Subtest: hosted adapters use server-side credentials and parse native response formats without sending keys in URLs or payloads
+ok 38 - hosted adapters use server-side credentials and parse native response formats without sending keys in URLs or payloads
+  ---
+  duration_ms: 111.1285
+  type: 'test'
+  ...
+# Subtest: provider failures never expose provider response bodies or credentials
+ok 39 - provider failures never expose provider response bodies or credentials
+  ---
+  duration_ms: 3.7226
+  type: 'test'
+  ...
+# Subtest: an incomplete provider response can fall back without exposing raw transport details
+ok 40 - an incomplete provider response can fall back without exposing raw transport details
+  ---
+  duration_ms: 3.1034
+  type: 'test'
+  ...
+# Subtest: quota failure falls back explicitly and subsequent requests respect provider cooldown
+ok 41 - quota failure falls back explicitly and subsequent requests respect provider cooldown
+  ---
+  duration_ms: 6.3876
+  type: 'test'
+  ...
+# Subtest: ReadyBy opening schedule finishes 08:19 and independently verifies
+ok 42 - ReadyBy opening schedule finishes 08:19 and independently verifies
+  ---
+  duration_ms: 12.9945
+  type: 'test'
+  ...
+# Subtest: washer recovery computes 08:28 full and 08:16 revision, without committing deferral
+ok 43 - washer recovery computes 08:28 full and 08:16 revision, without committing deferral
+  ---
+  duration_ms: 65.5727
+  type: 'test'
+  ...
+# Subtest: approval preserves facts and original deadline
+ok 44 - approval preserves facts and original deadline
+  ---
+  duration_ms: 11.5045
+  type: 'test'
+  ...
+# Subtest: essential laundry cannot be deferred and later departure needs approval
+ok 45 - essential laundry cannot be deferred and later departure needs approval
+  ---
+  duration_ms: 11.3153
+  type: 'test'
+  ...
+# Subtest: changing wait changes bound, not scripted answer
+ok 46 - changing wait changes bound, not scripted answer
+  ---
+  duration_ms: 44.3794
+  type: 'test'
+  ...
+# Subtest: reject keeps observed delay and infeasible state
+ok 47 - reject keeps observed delay and infeasible state
+  ---
+  duration_ms: 11.3215
+  type: 'test'
+  ...
+# Subtest: stale revisions, expired proposals and duplicate mutation guards
+ok 48 - stale revisions, expired proposals and duplicate mutation guards
+  ---
+  duration_ms: 10.9706
+  type: 'test'
+  ...
+# Subtest: dependencies and physical release block invalid progress
+ok 49 - dependencies and physical release block invalid progress
+  ---
+  duration_ms: 14.269
+  type: 'test'
+  ...
+# Subtest: pausing requires explicit remaining effort, resume preserves it
+ok 50 - pausing requires explicit remaining effort, resume preserves it
+  ---
+  duration_ms: 42.8605
+  type: 'test'
+  ...
+# Subtest: clock never auto-completes overdue active work
+ok 51 - clock never auto-completes overdue active work
+  ---
+  duration_ms: 86.3812
+  type: 'test'
+  ...
+# Subtest: checker catches overlap, missing work, false finish and altered completion
+ok 52 - checker catches overlap, missing work, false finish and altered completion
+  ---
+  duration_ms: 7.841
+  type: 'test'
+  ...
+# Subtest: required dependency closure disallows deferring prerequisite
+ok 53 - required dependency closure disallows deferring prerequisite
+  ---
+  duration_ms: 0.4185
+  type: 'test'
+  ...
+# Subtest: cycles, durations, participant IDs and invalid required flags rejected
+ok 54 - cycles, durations, participant IDs and invalid required flags rejected
+  ---
+  duration_ms: 0.6163
+  type: 'test'
+  ...
+# Subtest: implicit departure barrier cycles and optional final checks are invalid
+ok 55 - implicit departure barrier cycles and optional final checks are invalid
+  ---
+  duration_ms: 0.6219
+  type: 'test'
+  ...
+# Subtest: search budget returns uncertainty rather than fake infeasibility
+ok 56 - search budget returns uncertainty rather than fake infeasibility
+  ---
+  duration_ms: 0.3839
+  type: 'test'
+  ...
+# Subtest: participant absence preserves capacity constraints and yields checked alternatives
+ok 57 - participant absence preserves capacity constraints and yields checked alternatives
+  ---
+  duration_ms: 186.0905
+  type: 'test'
+  ...
+# Subtest: earlier feasible reassignment wins over original late allocation
+ok 58 - earlier feasible reassignment wins over original late allocation
+  ---
+  duration_ms: 0.4876
+  type: 'test'
+  ...
+# Subtest: paused work can bracket another completed task without inventing overlapping history
+ok 59 - paused work can bracket another completed task without inventing overlapping history
+  ---
+  duration_ms: 7.8041
+  type: 'test'
+  ...
+# Subtest: ReadyBy API preserves recovery across restart, rejects stale/cross-origin actions
+ok 60 - ReadyBy API preserves recovery across restart, rejects stale/cross-origin actions
+  ---
+  duration_ms: 662.7267
+  type: 'test'
+  ...
+# Subtest: AI request is persisted with a real tool receipt; duplicate command does not call model again
+ok 61 - AI request is persisted with a real tool receipt; duplicate command does not call model again
+  ---
+  duration_ms: 129.9483
+  type: 'test'
+  ...
+# Subtest: corrupt storage is not silently replaced; failed durable write cannot advance state
+ok 62 - corrupt storage is not silently replaced; failed durable write cannot advance state
+  ---
+  duration_ms: 20.583
+  type: 'test'
+  ...
+# Subtest: AI parsing guard rejects unsupported tools and negated physical completion
+ok 63 - AI parsing guard rejects unsupported tools and negated physical completion
+  ---
+  duration_ms: 11.0963
+  type: 'test'
+  ...
+# Subtest: API persists handoff, rejects stale actions and cross-origin mutations
+ok 64 - API persists handoff, rejects stale actions and cross-origin mutations
+  ---
+  duration_ms: 392.9907
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 64
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12269.2386

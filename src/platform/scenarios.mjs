@@ -65,7 +65,7 @@ export function rehearsal(scenario = "opening") {
   s.messages = [
     {
       role: "assistant",
-      text: `Demo chapter: ${scenario}. Progress and time were explicitly seeded through real task actions. The next request can use live local AI.`,
+      text: `Demo chapter: ${scenario}. Progress and time were explicitly seeded through real task actions. The next request can use configured AI through the real MCP tools.`,
     },
   ];
   return s;

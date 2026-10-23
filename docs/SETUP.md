@@ -2,11 +2,11 @@
 
 **When a household plan slips, recover the deadline without losing progress or silently dropping essentials.**
 
-ReadyBy 0.3 is an Alexa+ experience simulator backed by a **real self-hosted MCP server**. The React app and an independent CLI use the official MCP SDK, protocol **2025-11-25**, and **Streamable HTTP**. AI interprets language; deterministic scheduling and an independent checker establish feasibility. Consequential revisions require review and confirmation bound to the exact proposal.
+ReadyBy 0.4 is an Alexa+ experience simulator backed by a **real self-hosted MCP server**. The React app and an independent CLI use the official MCP SDK, protocol **2025-11-25**, and **Streamable HTTP**. AI interprets language; deterministic scheduling and an independent checker establish feasibility. Consequential revisions require review and confirmation bound to the exact proposal.
 
-This is a locally operated private beta. Native Alexa/Echo connectivity, appliance telemetry and AWS are not implemented. Source, household storage and speech recognition run locally; hosted AI sends the request and bounded mission context to the configured provider. Select Ollama for local inference.
+A public judge beta is also [hosted over HTTPS](HOSTING.md). Native Alexa/Echo connectivity, appliance telemetry and AWS are not implemented. Local installations keep their own household storage; hosted text AI sends the request and bounded mission context to its provider. Gemini Live voice streams microphone audio to Google while connected. Select Ollama for local text inference.
 
-Start with [current verification](READYBY_MCP_VERIFICATION.md), [final handoff](READYBY_FINAL_HANDOFF.md), and the [architecture](architecture/readyby-actual-architecture.png). Earlier v0.1/v0.2 reports are historical.
+Start with [0.4 verification](READYBY_0_4_VERIFICATION.md), [retained 0.3 MCP verification](READYBY_MCP_VERIFICATION.md), [final handoff](READYBY_FINAL_HANDOFF.md), and the [architecture](architecture/readyby-actual-architecture.png). Earlier v0.1/v0.2 reports are historical.
 
 ## Run
 
@@ -19,7 +19,7 @@ pnpm build
 node app-server.mjs
 ```
 
-Open http://127.0.0.1:4173 and choose **Explore a private demo**. No external account is needed. Creating a permanent household uses a passphrase and a one-use recovery code; save that code when shown. Guest demos have no recoverable account sign-in.
+Open http://127.0.0.1:4173 and choose **Try the live demo**. No external account is needed. Creating a permanent household uses a passphrase and a one-use recovery code; save that code when shown. Guest demos have no recoverable account sign-in.
 
 The attached ReadyBy-Local-Submission.zip release bundle contains a prebuilt frontend. A Git checkout or GitHub-generated source archive requires pnpm build. `node app-server.mjs` still requires installed Node dependencies, including the MCP SDK. Default storage is `data/readyby-platform.sqlite`, default port 4173, bound to loopback. `.env` is loaded at startup; existing shell variables take precedence. Copy `.env.example` or set variables directly. Real keys, databases, backups and installed runtimes are excluded from the archive.
 
@@ -31,9 +31,13 @@ The attached ReadyBy-Local-Submission.zip release bundle contains a prebuilt fro
 
 With no explicit provider, auto mode chooses configured Gemini, then Groq, then NVIDIA, or installed Ollama. Select the provider explicitly for reproducible review. Configuration indicates credentials exist, not a guarantee of quota or availability. Local mode has no paid-service requirement.
 
-Hosted inference sends text and task/person context to the actual provider. Audio stays with the local recognizer; its reviewed transcript may then be sent as text. Keys never reach frontend code. Provider terms, quota and billing apply to hosted calls.
+Hosted inference sends text and task/person context to the actual provider. Live voice streams audio to Google using a short-lived credential. Optional recorded transcription processes audio on the ReadyBy server. Permanent keys never reach frontend code. Provider terms, quota and billing apply to hosted calls.
 
-### Optional local speech
+### Live voice
+
+Set `GEMINI_API_KEY` on the server, restart, and choose **Start live voice** in the household display. Allow microphone access; no wake word is needed. Speak normally and interrupt replies naturally. Stop closes capture. A funded Gemini API project is required; a new project may need AI Studio prepayment. See [voice configuration, privacy and limitations](LIVE_VOICE.md).
+
+### Optional recorded transcription
 
 ```powershell
 python scripts/setup-speech.py

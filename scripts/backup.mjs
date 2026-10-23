@@ -6,7 +6,10 @@ const source = resolve(
 );
 const destination = resolve(
   process.argv[2] ||
-    `backups/readyby-${new Date().toISOString().replace(/[:.]/g, "-")}.sqlite`,
+    resolve(
+      process.env.READYBY_BACKUP_DIRECTORY || "backups",
+      `readyby-${new Date().toISOString().replace(/[:.]/g, "-")}.sqlite`,
+    ),
 );
 if (!existsSync(source))
   throw Error("The configured ReadyBy database does not exist.");
